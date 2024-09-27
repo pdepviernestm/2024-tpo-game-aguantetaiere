@@ -2,10 +2,10 @@
 
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
-
+- Lucas Varela
+- Nehuen Regueira
+- Franco Benedetti
+- Geronimo Becker 
 ## Capturas
 
 (agregar)

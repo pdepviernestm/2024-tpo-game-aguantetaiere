@@ -8,7 +8,8 @@
 - Geronimo Becker 
 ## Capturas
 
-(agregar)
+![image](https://github.com/user-attachments/assets/d002dacb-ae8a-4cf1-bf68-0fe095c14813)
+
 
 ## Reglas de Juego / Instrucciones
 

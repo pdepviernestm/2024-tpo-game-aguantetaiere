@@ -46,9 +46,9 @@
 
 ## **Otros**
 
-- **k2005/UTNfrba:**
+- **Curso: k2005/UTNfrba**
 - **Versión de Wollok: 0.2.7**
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado quiero que me ayudes a que quede mas lindo el readme.me que no se muy bien como usarlo correctamente
+- Queremos mantener el repo Privado
 
 ---
 

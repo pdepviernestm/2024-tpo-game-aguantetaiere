@@ -12,7 +12,7 @@
 ## **Capturas de Pantalla**
 
 ### **Personaje Principal: Milei**
-![Personaje Milei](https://github.com/user-attachments/assets/42f61df2-ee35-4a1d-ae9c-06b6afdeea29)
+![image](https://github.com/user-attachments/assets/4b88701b-3db3-4b36-90f9-508ba1f803fe)
 
 ### **Obstáculo**
 ![Obstáculo](https://github.com/user-attachments/assets/d002dacb-ae8a-4cf1-bf68-0fe095c14813)

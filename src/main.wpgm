@@ -1,0 +1,33 @@
+import wollok.game.*
+import flappy.*
+//import flappyGame.*
+import obstacles.*
+import powerUps.*
+
+program flappyLeiGame {
+
+    // inicializar
+    game.width(17)
+    game.height(10)
+    game.cellSize(70)
+    game.title('FlappyLei')
+
+    // mostrarMenu() hacer y modificar el wpgm
+
+    game.boardGround("fondo.png")
+
+    game.addVisual(flappyLei)
+
+    keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
+
+    game.onTick(
+		1000,
+		// Cada 2 segundos pepita va bajando una posicion en Y
+		"movimiento",
+		{ flappyLei.position(flappyLei.position().down(1)) }//es una verga y no puedo poner menos de 1
+
+	)
+
+    game.start()
+    
+}

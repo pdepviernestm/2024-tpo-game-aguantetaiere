@@ -22,13 +22,13 @@ program flappyLeiGame {
     keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
 
     game.onTick(
-		1200,
+		2000,
 		"movimiento",
 		{ flappyLei.position(flappyLei.position().down(1)) }
 
 	)
 
-
+  obstacles.render()
     // Aparicion de los obstaculos
     game.onTick(5000,"aparicion obstaculos",{
         obstacles.render()
@@ -36,24 +36,17 @@ program flappyLeiGame {
 
 
     // Movimiento de los obstaculos
-		game.onTick(1000, 'obstacles movement', {
+		game.onTick(800, 'obstacles movement', {
 			obstacles.getCollectionArriba().forEach({ 
 				obstacle => obstacle.moverIzquierda()
 				})
 			})
 
-		game.onTick(1000, 'obstacles movement', {
+		game.onTick(800, 'obstacles movement', {
 			obstacles.getCollectionAbajo().forEach({ 
 				obstacle => obstacle.moverIzquierda()
 				})
 			})
-
-    game.onTick(
-		1200,
-		"movimiento",
-		{ flappyLei.position(flappyLei.position().down(1)) }
-
-	)
 
 
     game.start()

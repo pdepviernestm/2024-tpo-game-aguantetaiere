@@ -1,0 +1,54 @@
+import wollok.game.*
+import flappy.*
+//import flappyGame.*
+import obstacles.*
+import powerUps.*
+
+program flappyLeiGame {
+
+    // inicializar
+    game.width(17)
+    game.height(10)
+    game.cellSize(70)
+    game.title('FlappyLei')
+
+    // mostrarMenu() hacer y modificar el wpgm
+    
+    game.boardGround("fondo.png")
+
+    game.addVisual(flappyLei)
+
+
+    keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
+
+    game.onTick(
+		2000,
+		"movimiento",
+		{ flappyLei.position(flappyLei.position().down(1)) }
+
+	)
+
+  obstacles.render()
+    // Aparicion de los obstaculos
+    game.onTick(5000,"aparicion obstaculos",{
+        obstacles.render()
+    })
+
+
+    // Movimiento de los obstaculos
+		game.onTick(800, 'obstacles movement', {
+			obstacles.getCollectionArriba().forEach({ 
+				obstacle => obstacle.moverIzquierda()
+				})
+			})
+
+		game.onTick(800, 'obstacles movement', {
+			obstacles.getCollectionAbajo().forEach({ 
+				obstacle => obstacle.moverIzquierda()
+				})
+			})
+
+
+    game.start()
+    
+}

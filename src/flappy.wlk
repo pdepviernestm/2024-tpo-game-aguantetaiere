@@ -15,6 +15,10 @@ object flappyLei {
 
     method initialPosition() { position = game.at(3,10) }
 
+<<<<<<< HEAD
     method image() = "Milei.png"
+=======
+    method image() = "milei.png"
+>>>>>>> 37dd6b141222a27fc83a31a0759b86c5ae42049c
 }
 

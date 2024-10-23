@@ -26,13 +26,21 @@ class Obstaculo {
 
 class Obstacle {
     var property p // Posicion
-	var property cA // Area de colision 
+	//var property hitbox // Area de colision 
 
 	
-	method image() = "obstaculo.png"
+	//method image() = "obstaculo.png"
 	method position() = p
 	method position(newPosition) { p = newPosition }
-	method cA() = cA
+	//method hitbox() = hitbox
+}
+
+class ObstacleArriba inherits Obstacle{
+	method image() = "obstaculoInvertido.png"
+}
+
+class ObstacleAbajo inherits Obstacle{
+	method image() = "obstaculito.png"
 }
 
 object obstacles {
@@ -50,27 +58,58 @@ object obstacles {
 		[13,  -28],
 		[18,  -23]
 	]
+
+
+	var coleccionArriba=[]
+	var coleccionAbajo=[]
+
 	
-	method getCollection() = collection
 	method resetCollection() = { collection = initialCollection }
-		
+
+	
+
+
 	method render() {
-		const posY = obstaclesPositions.anyOne()
-		const topPiece = posY.first()
-		const bottomPiece = posY.last()
+		//const posY = obstaclesPositions.anyOne()
 		
-		const newObstacle = [
-			// Parte de arriba
-			new Obstaculo( position = game.at(5, 5), cA = (topPiece..30) ),
+		const positionYAbajo = game.at(20, -5.randomUpTo(10))
+
+		//const topPiece = posY.first()
+		//const bottomPiece = posY.last()
+		
+		// const newObstacle = [
+		// 	// Parte de arriba
+		// 	new Obstacle( p = game.at(25, topPiece), cA = (topPiece..30) ),
 			
-			// Parte de abajo
-			new Obstaculo( position = game.at(10, 10), cA = (bottomPiece..bottomPiece+33) )
-		]
+		// 	// Parte de abajo
+		// 	new Obstacle( p = game.at(25, bottomPiece), cA = (bottomPiece..bottomPiece+33) )
+		// ]
+
+		const positionsArribaY=[5,6,7,8,9,10]
+
+		var posArribaY = positionsArribaY.anyOne()
+
+		var posAbajoY = posArribaY-10
+
+		//var randomPosAbajo = game.at(5, -5.randomUpTo(10))
+		//var posArriba = randomPosAbajo.last()+10
+
+		//const newObstacle = [
+		// Parte de abajo
+		var obstAbajo = new ObstacleAbajo( p = game.at(5,posAbajoY))
+			
+		// Parte de abajo
+		var obstArriba = new ObstacleArriba( p = game.at(5,posArribaY))
+		//]
 		
-		collection.add(newObstacle)
-		newObstacle.forEach({ piece => game.addVisual(piece) }) //
+		game.addVisual(obstAbajo)
+		game.addVisual(obstArriba)
+		
+		//collection.add(newObstacle)
+		//newObstacle.forEach({ piece => game.addVisual(piece) }) //
 	}
 	
+
 	method behaviour(piece) {
 		const posX = piece.position().x()
 		const posY = piece.position().y()
@@ -94,13 +133,13 @@ object obstacles {
         
 	}
 	
-	method restart() {
-		initialCollection.clear()
-		initialCollection.add(
-			[
-				new Obstacle(p = game.at(25, 16), cA = (16..25)), 
-				new Obstacle(p = game.at(25, -25), cA = (-25..8))
-			]
-		)
-	}
+	// method restart() {
+	// 	initialCollection.clear()
+	// 	initialCollection.add(
+	// 		[
+	// 			new Obstacle(p = game.at(25, 16), hitbox = (16..25)), 
+	// 			new Obstacle(p = game.at(25, -25), hitbox = (-25..8))
+	// 		]
+	// 	)
+	// }
 }

@@ -1,4 +1,3 @@
-// lógica de Milei, incluyendo cambios de dirección, inversión de controles, velocidad, y manejo de vidas.
 import wollok.game.*
 import flappyGame.*
 import obstacles.*
@@ -15,6 +14,6 @@ object flappyLei {
 
     method initialPosition() { position = game.at(3,10) }
 
-    method image() = "milei.png"
+    method image() = "Milei.png"
 }
 

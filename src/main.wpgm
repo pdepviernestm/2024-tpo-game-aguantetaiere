@@ -17,32 +17,43 @@ program flappyLeiGame {
     game.boardGround("fondo.png")
 
     game.addVisual(flappyLei)
-    //game.addVisual(new Obstacle(p=game.at(10,-4)))//,cA = (1..30)))
-
-    //Obstacles
-		// obstacles.getCollection().forEach({
-		// 	obstacle => obstacle.forEach({ 
-		// 		piece => game.addVisual(piece)
-		// 	})
-		// })
-		
-    obstacles.render()
 
 
     keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
 
     game.onTick(
-		750,
-		// Cada 2 segundos pepita va bajando una posicion en Y
+		1200,
 		"movimiento",
-		{ flappyLei.position(flappyLei.position().down(1)) }//es una verga y no puedo poner menos de 1
+		{ flappyLei.position(flappyLei.position().down(1)) }
 
 	)
-    
-    
 
-    //////////////////
 
+    // Aparicion de los obstaculos
+    game.onTick(5000,"aparicion obstaculos",{
+        obstacles.render()
+    })
+
+
+    // Movimiento de los obstaculos
+		game.onTick(1000, 'obstacles movement', {
+			obstacles.getCollectionArriba().forEach({ 
+				obstacle => obstacle.moverIzquierda()
+				})
+			})
+
+		game.onTick(1000, 'obstacles movement', {
+			obstacles.getCollectionAbajo().forEach({ 
+				obstacle => obstacle.moverIzquierda()
+				})
+			})
+
+    game.onTick(
+		1200,
+		"movimiento",
+		{ flappyLei.position(flappyLei.position().down(1)) }
+
+	)
 
 
     game.start()

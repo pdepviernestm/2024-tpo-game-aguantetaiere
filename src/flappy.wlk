@@ -15,5 +15,6 @@ object flappyLei {
     method initialPosition() { position = game.at(3,10) }
 
     method image() = "Milei.png"
+
 }
 

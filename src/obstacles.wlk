@@ -5,12 +5,31 @@ import flappy.*
 import flappyGame.*
 import powerUps.*
 
+class Obstaculo {
+	var property position
+	var property cA // Area de colision 
+    //method position() = position
+    // method position(newPos) {
+    // position = newPos
+    // }
+
+	method image() = "obstaculo.png" 
+
+	
+	
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+
 class Obstacle {
     var property p // Posicion
 	var property cA // Area de colision 
 
 	
-	method image() = "obstacle.png"
+	method image() = "obstaculo.png"
 	method position() = p
 	method position(newPosition) { p = newPosition }
 	method cA() = cA
@@ -42,14 +61,14 @@ object obstacles {
 		
 		const newObstacle = [
 			// Parte de arriba
-			new Obstacle( p = game.at(25, topPiece), cA = (topPiece..30) ),
+			new Obstaculo( position = game.at(5, 5), cA = (topPiece..30) ),
 			
 			// Parte de abajo
-			new Obstacle( p = game.at(25, bottomPiece), cA = (bottomPiece..bottomPiece+33) )
+			new Obstaculo( position = game.at(10, 10), cA = (bottomPiece..bottomPiece+33) )
 		]
 		
 		collection.add(newObstacle)
-		newObstacle.forEach({ piece => game.addVisual(piece) })
+		newObstacle.forEach({ piece => game.addVisual(piece) }) //
 	}
 	
 	method behaviour(piece) {

@@ -13,20 +13,34 @@ program flappyLeiGame {
     game.title('FlappyLei')
 
     // mostrarMenu() hacer y modificar el wpgm
-
+    
     game.boardGround("fondo.png")
 
     game.addVisual(flappyLei)
+    game.addVisual(new Obstacle(p=game.at(5,5),cA = (1..30)))
+
+    // Obstacles
+		// obstacles.getCollection().forEach({
+		// 	obstacle => obstacle.forEach({ 
+		// 		piece => game.addVisual(piece)
+		// 	})
+		// })
+		
 
     keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
 
     game.onTick(
-		1000,
+		2000,
 		// Cada 2 segundos pepita va bajando una posicion en Y
 		"movimiento",
 		{ flappyLei.position(flappyLei.position().down(1)) }//es una verga y no puedo poner menos de 1
 
 	)
+    
+
+    //////////////////
+
+
 
     game.start()
     

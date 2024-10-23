@@ -36,11 +36,11 @@ object flappyGame {
 		game.addVisual(flappyLei)
 		
 		// Obstacles
-		obstacles.getCollection().forEach({
-			obstacle => obstacle.forEach({ 
-				piece => game.addVisual(piece)
-			})
-		})
+		// obstacles.getCollection().forEach({
+		// 	obstacle => obstacle.forEach({ 
+		// 		piece => game.addVisual(piece)
+		// 	})
+		// }) AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 		
 		// Score
 		game.addVisual(scoreInGame)
@@ -71,11 +71,7 @@ object flappyGame {
 		
 		// Movimiento de los obstaculos
 		game.onTick(250, 'obstacles movement', {
-			obstacles.getCollection().forEach({ 
-				obstacle => obstacle.forEach({ 
-					piece => obstacles.behaviour(piece)
-				})
-			})
+			
 		})
 		
 	}
@@ -93,7 +89,7 @@ object flappyGame {
 		
 		keyboard.c().onPressDo({ 
 			game.clear()
-			obstacles.restart()
+			//obstacles.restart()
 			totalScore = 0
 			self.play()
 		})
@@ -126,7 +122,7 @@ class Score {
 	var property image	
 
 	method position() = position
-	method position(newPosition) = { position = newPosition } 
+	//method position(newPosition) = { position = newPosition } 
 	method changeScoreImage(newScore) {
 		image = 'flappyImages/score_' + newScore + '.png'
 	}

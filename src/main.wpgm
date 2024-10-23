@@ -17,15 +17,17 @@ program flappyLeiGame {
     game.boardGround("fondo.png")
 
     game.addVisual(flappyLei)
-    game.addVisual(new Obstacle(p=game.at(5,5),cA = (1..30)))
+    //game.addVisual(new Obstacle(p=game.at(10,-4)))//,cA = (1..30)))
 
-    // Obstacles
+    //Obstacles
 		// obstacles.getCollection().forEach({
 		// 	obstacle => obstacle.forEach({ 
 		// 		piece => game.addVisual(piece)
 		// 	})
 		// })
 		
+    obstacles.render()
+
 
     keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
 

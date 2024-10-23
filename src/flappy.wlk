@@ -15,6 +15,6 @@ object flappyLei {
 
     method initialPosition() { position = game.at(3,10) }
 
-    method image() = "flappyMilei_small.png"
+    method image() = "Milei.png"
 }
 

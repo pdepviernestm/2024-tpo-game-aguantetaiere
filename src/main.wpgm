@@ -32,7 +32,7 @@ program flappyLeiGame {
     keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
 
     game.onTick(
-		2000,
+		750,
 		// Cada 2 segundos pepita va bajando una posicion en Y
 		"movimiento",
 		{ flappyLei.position(flappyLei.position().down(1)) }//es una verga y no puedo poner menos de 1

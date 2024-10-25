@@ -7,9 +7,9 @@ import powerUps.*
 program flappyLeiGame {
 
     // inicializar
-    game.width(17)
-    game.height(10)
-    game.cellSize(70)
+    game.width(40)
+    game.height(20)
+    game.cellSize(20)
     game.title('FlappyLei')
 
     // mostrarMenu() hacer y modificar el wpgm
@@ -22,7 +22,7 @@ program flappyLeiGame {
     keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
 
     game.onTick(
-		2000,
+		1000,
 		"movimiento",
 		{ flappyLei.position(flappyLei.position().down(1)) }
 

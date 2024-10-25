@@ -15,12 +15,17 @@ class Obstacle {
 
 	method moverIzquierda(){
 		self.position(game.at(p.x()-1,p.y()))
+		
+		if (flappyLei.position().x() > p.x()){
+			score.text(score.textNumero()+1)
+		}
 
-		// if (flappyLei.position().x()==p.x() && 
-		// (-5 >= flappyLei.position().y() && 0 <= flappyLei.position().y()) ||
-		// 5 >= flappyLei.position().y() && 10 <= flappyLei.position().y()){
-		// 	game.stop()
-		// }
+
+		if (p.x()<=-3){
+			obstacles.getCollectionAbajo().remove(self)
+			game.removeVisual(self)
+		}
+		
 	}
 
 	
@@ -42,21 +47,13 @@ object obstacles{
 	var coleccionArriba=[]
 	var coleccionAbajo=[]
 
-	
-
 
 	method getCollectionArriba()=coleccionArriba
 	method getCollectionAbajo()=coleccionAbajo
 
-	
-
-
 	method render() {
-		//const posY = obstaclesPositions.anyOne()
 		
 		const positionYAbajo = game.at(20, -5.randomUpTo(10))
-
-
 
 		const positionsArribaY=[5,6,7,8,9,10]
 
@@ -69,7 +66,6 @@ object obstacles{
 
 		// Parte de abajo
 		var obstArriba = new ObstacleArriba( p = game.at(20,posArribaY))
-		//]
 		
 		coleccionAbajo.add(obstAbajo)
 		coleccionArriba.add(obstArriba)

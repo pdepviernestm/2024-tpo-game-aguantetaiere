@@ -40,3 +40,17 @@ object score{
     }
 }
 
+object pisoInvisible {
+   var position = game.at(1, 4) // Metodo position devuelve un objeto
+    method position() = position
+    method position(newPos) {
+        position = newPos
+    }
+
+    method reaccionar(algo) {
+			game.say(self, "OH OH!!")
+    		game.removeTickEvent("movimiento")
+    		game.schedule(2000,{game.stop()})
+		}
+}
+

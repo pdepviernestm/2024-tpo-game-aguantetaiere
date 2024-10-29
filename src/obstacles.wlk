@@ -16,17 +16,23 @@ class Obstacle {
 	method moverIzquierda(){
 		self.position(game.at(p.x()-1,p.y()))
 		
-		if (flappyLei.position().x() > p.x()){
-			score.text(score.textNumero()+1)
+		if (flappyLei.position().x() == (p.x() + 3)){
+			score.text(score.textNumero()+0.5)
 		}
 
 
-		if (p.x()<=-3){
+		if (p.x()<=-4){
 			obstacles.getCollectionAbajo().remove(self)
 			game.removeVisual(self)
 		}
 		
 	}
+
+	method reaccionar(algo) {
+			game.say(self, "CHOCASTE!!")
+    		game.removeTickEvent("movimiento")
+    		game.schedule(2000,{game.stop()})
+		}
 
 	
 
@@ -73,6 +79,10 @@ object obstacles{
 		game.addVisual(obstAbajo)
 		game.addVisual(obstArriba)
 
+		
+
 	}
+
+	
 
 }

@@ -46,6 +46,32 @@ program flappyLeiGame {
 				obstacle => obstacle.moverIzquierda()
 				})
 			})
+
+
+
+
+  // // Colisión de flappyLei con obstáculos
+  // game.whenCollideDo(flappyLei, { elemento =>
+  //     if (obstacles.getCollectionArriba().contains(elemento) || obstacles.getCollectionAbajo().contains(elemento)) {
+  //       game.say(flappyLei, "¡Chocaste!")
+  //       game.stop()
+  //     }
+  //   })
+
+
+
+  // // Colisión de flappyLei con el pisoInvisible
+  // game.whenCollideDo(flappyLei, { elemento =>
+  //     if (elemento == pisoInvisible) {
+  //       game.say(flappyLei, "¡GAME OVER!")
+  //       game.stop()
+  //   }
+
+  // })
+
+ //   game.onCollideDo(flappyLei, {cosa => cosa.reaccionar(flappyLei)})
+
+
     
     game.addVisual(score)
 

@@ -22,7 +22,7 @@ program flappyLeiGame {
     keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
 
     game.onTick(
-		1500,
+		2000,
 		"movimiento",
 		{ flappyLei.position(flappyLei.position().down(1)) }
 

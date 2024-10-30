@@ -1,3 +1,5 @@
+// src/main.wpgm
+// src/main.wpgm
 import wollok.game.*
 import flappy.*
 //import flappyGame.*
@@ -47,32 +49,13 @@ program flappyLeiGame {
 				})
 			})
 
+  // manejo de colisiones
+   game.onCollideDo(flappyLei, {cosa => cosa.reaccionar(flappyLei)})
 
 
+    game.addVisual(pisoInvisible)
+    game.addVisual(techoInvisible)
 
-  // // Colisión de flappyLei con obstáculos
-  // game.whenCollideDo(flappyLei, { elemento =>
-  //     if (obstacles.getCollectionArriba().contains(elemento) || obstacles.getCollectionAbajo().contains(elemento)) {
-  //       game.say(flappyLei, "¡Chocaste!")
-  //       game.stop()
-  //     }
-  //   })
-
-
-
-  // // Colisión de flappyLei con el pisoInvisible
-  // game.whenCollideDo(flappyLei, { elemento =>
-  //     if (elemento == pisoInvisible) {
-  //       game.say(flappyLei, "¡GAME OVER!")
-  //       game.stop()
-  //   }
-
-  // })
-
- //   game.onCollideDo(flappyLei, {cosa => cosa.reaccionar(flappyLei)})
-
-
-    
     game.addVisual(score)
 
     game.start()

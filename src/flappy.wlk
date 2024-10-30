@@ -40,17 +40,30 @@ object score{
     }
 }
 
+// Se repite codigo
 object pisoInvisible {
-   var position = game.at(1, 4) // Metodo position devuelve un objeto
+   var position = game.at(3, -1) // Metodo position devuelve un objeto
+   method image()= "image"
     method position() = position
     method position(newPos) {
         position = newPos
     }
 
     method reaccionar(algo) {
-			game.say(self, "OH OH!!")
     		game.removeTickEvent("movimiento")
-    		game.schedule(2000,{game.stop()})
+    		game.stop()
 		}
 }
+object techoInvisible {
+  var position = game.at(3, 9.5)
+  // method image()= "img70x70.png"
+    method position() = position
+    method position(newPos) {
+        position = newPos
+    }
 
+    method reaccionar(algo) {
+    		game.removeTickEvent("movimiento")
+    		game.stop()
+		}
+}

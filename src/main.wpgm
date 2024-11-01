@@ -30,20 +30,20 @@ program flappyLeiGame {
   // Aparicion de los obstaculos
     obstacles.render()
     
-    game.onTick(5000,"aparicion obstaculos",{
+    game.onTick(4500,"aparicion obstaculos",{
         obstacles.render()
     })
 
     game.addVisual(flappyLei)
 
     // Movimiento de los obstaculos
-		game.onTick(800, 'obstacles movement', ({
+		game.onTick(500, 'obstacles movement', ({
 			obstacles.getCollectionArriba().forEach({ 
 				obstacle => obstacle.moverIzquierda()
 				})
 			}))
 
-		game.onTick(800, 'obstacles movement', {
+		game.onTick(500, 'obstacles movement', {
 			obstacles.getCollectionAbajo().forEach({ 
 				obstacle => obstacle.moverIzquierda()
 				})

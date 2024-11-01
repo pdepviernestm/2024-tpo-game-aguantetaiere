@@ -19,7 +19,7 @@ object flappyLei {
 }
 
 object score{
-    var position = game.at(7, 8) 
+    var position = game.at(3, 9) 
     method position() = position
     method position(newPos) {
         position = newPos

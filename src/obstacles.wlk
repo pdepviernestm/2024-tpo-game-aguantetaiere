@@ -15,15 +15,15 @@ class SubObstacle {
     method moverIzquierda(){
         self.position(game.at(p.x()-1,p.y()))
 
-        if (flappyLei.position().x() == (p.x() + 3)){
+        if (flappyLei.position().x() == (p.x()+3)){
             score.text(score.textNumero()+0.1) // eso por las 10 img da 1
         }
 
 
-        if (p.x()<=-4){
-            obstacles.getCollectionAbajo().remove(self)
-            game.removeVisual(self)
-        }
+        // if (p.x()<=-4){
+        //     obstacles.getCollectionAbajo().remove(self)
+        //     game.removeVisual(self)
+        // }
 
     }
 
@@ -63,7 +63,7 @@ object obstacles {
     }
 
     method render() {
-        const posX = 20
+        const posX = 17
         const posYArribaBase = [5, 6, 7, 8, 9, 10].anyOne()
         const posYAbajoBase = posYArribaBase - 10
 

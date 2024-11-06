@@ -55,7 +55,7 @@ object gameManager{
 
 // Musica
 // HACER MUSICA NORMAL DE FONDO HASTA QUE PASEN 15 SEGUNDOS
-    const rain = game.sound("light-rain.mp3")
+    const rain = game.sound("flappybird.mp3")
     rain.shouldLoop(true)
     game.schedule(500, { rain.play()} )
   }

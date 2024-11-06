@@ -46,7 +46,9 @@ class LimitesMapa {
 
     method reaccionar(algo) {
     		game.removeTickEvent("movimiento")
-    		game.stop()
+            game.removeTickEvent("obstacles movement")
+            game.removeTickEvent("powerUp")
+            game.stop()
 		}
 }
 

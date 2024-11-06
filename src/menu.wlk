@@ -7,16 +7,36 @@ object menu{
         game.height(10)
         game.cellSize(70)
         game.title('FlappyLei')
-        game.boardGround("MENUgrande.png")
-        game.addVisual(flappyLeiTexto)
-
-        
-    }
-    method desRender(gameManager){
-        game.removeVisual(flappyLeiTexto)
         game.boardGround("fondo.png")
-        gameManager.manager()
+        game.addVisual(flappyLeiTexto)
+        game.addVisual(instruccionTexto)
     }
+    method desRender(){
+        game.removeVisual(flappyLeiTexto)
+        game.removeVisual(instruccionTexto)
+    }
+    
+    var aparicion=1
+    method aparecerDesaparecerTexto(){
+        if (aparicion==1){
+            game.addVisual(instruccionTexto)
+            aparicion=0
+        }
+        else{
+            game.removeVisual(instruccionTexto)
+            aparicion=1
+        }
+    }
+
+    method activarDesactivarTexto(){
+        game.onTick(2000,"aparicion_desaparicion",{self.aparecerDesaparecerTexto()})
+    }
+}
+
+object instruccionTexto{
+    method position()=game.at(7,7)
+    method text()="Toque el espacio para empezar!"
+    method textColor()="00FF00FF"
 }
 
 object flappyLeiTexto{

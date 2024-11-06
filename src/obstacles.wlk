@@ -1,7 +1,7 @@
 import wollok.game.*
 import flappy.*
 import powerUps.*
-
+import menu.*
 class SubObstacle {
     var property p
     var property image
@@ -30,7 +30,13 @@ class SubObstacle {
 
     method reaccionar(algo) {
         game.removeTickEvent("movimiento")
+        game.removeTickEvent("obstacles movement")
+        game.removeTickEvent("powerUp")
+        
+        game.addVisual(menu)
+        menu.render()
         game.stop()
+
     }
 }
 

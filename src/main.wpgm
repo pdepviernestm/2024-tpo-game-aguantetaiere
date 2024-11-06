@@ -7,29 +7,26 @@ import obstacles.*
 import powerUps.*
 
 program flappyLeiGame {
-
-    // inicializar
+  
+    // Configuración del juego
     game.width(17)
     game.height(10)
-    game.cellSize(70) // 70x70 hitbox
+    game.cellSize(70)
     game.title('FlappyLei')
-
     game.boardGround("fondo.png")
 
-    
-
-    
-
+    // controles
     keyboard.q().onPressDo({game.stop()})
     keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
 
+    // movimiento de flappy
     game.onTick(
 		2000,
 		"movimiento",
-		{ flappyLei.position(flappyLei.position().down(1)) }
+		{ flappyLei.position(flappyLei.position().down(1)) 
+    })
 
-	)
-  // Aparicion de los obstaculos
+    // Aparicion de los obstaculos
     obstacles.render()
     
     game.onTick(4500,"aparicion obstaculos",{
@@ -51,18 +48,15 @@ program flappyLeiGame {
 				})
 			})
 
-  // manejo de colisiones
-   game.onCollideDo(flappyLei, {cosa => cosa.reaccionar(flappyLei)})
+    // manejo de colisiones
+    game.onCollideDo(flappyLei, {cosa => cosa.reaccionar(flappyLei)})
 
 
+    // Visuales adicionales
     game.addVisual(pisoInvisible)
     game.addVisual(techoInvisible)
-
     game.addVisual(score)
-
-    game.addVisual(flappyLei) // ponerlo despues para que vaya arriba
+    game.addVisual(flappyLei)
 
     game.start()
-
-    
 }

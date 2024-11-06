@@ -92,6 +92,5 @@ object obstacles {
     method moverObstaculos() {
         coleccionArriba.forEach({ parte => parte.moverIzquierda() })
         coleccionAbajo.forEach({ parte => parte.moverIzquierda() })
-
     }
 }

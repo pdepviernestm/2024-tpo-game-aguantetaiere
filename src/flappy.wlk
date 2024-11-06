@@ -37,6 +37,7 @@ object score{
     }
 }
 
+
 // Se repite codigo
 object pisoInvisible {
    var position = game.at(3, -1) // Metodo position devuelve un objeto
@@ -64,3 +65,24 @@ object techoInvisible {
     		game.stop()
 		}
 }
+
+// class PisoInvisible inherits LimitesMapa {
+//     override method position() = game.at(3, -1)
+// }
+
+// class TechoInvisible inherits LimitesMapa {
+//     override method position() = game.at(3, 9.5)
+// }
+
+// class LimitesMapa {
+//     var position
+//     method position() = position
+//     method position(newPos) {
+//         position = newPos
+//     }
+
+//     method reaccionar(algo) {
+//     		game.removeTickEvent("movimiento")
+//     		game.stop()
+// 		}
+// }

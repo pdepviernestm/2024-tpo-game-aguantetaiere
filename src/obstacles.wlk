@@ -12,13 +12,15 @@ class SubObstacle {
     method image() = image
 
     method moverIzquierda(){
+
         self.position(game.at(p.x()-1,p.y()))
 
+        // conteo de puntuacion
         if (flappyLei.position().x() == (p.x() + 1)){
             score.text(score.textNumero()+0.0625) // eso por las 10 img da 1, 0.1
         }
 
-
+        // romper obstaculos cuando se vvan del mapa
         if (p.x()<=-4){
             obstacles.getCollectionAbajo().remove(self)
             game.removeVisual(self)
@@ -41,7 +43,7 @@ object obstacles {
     method inicializarSubObstaculosArriba(posX, posYBase) {
         return [
             new SubObstacle(p = game.at(posX, posYBase), image = "obsTechInv2.png"),
-            new SubObstacle(p = game.at(posX, posYBase), image = ""),
+            new SubObstacle(p = game.at(posX, posYBase + 33), image = "obstMedio2.png"),
             new SubObstacle(p = game.at(posX, posYBase + 1), image = "obstMedio2.png"),
             new SubObstacle(p = game.at(posX, posYBase + 2), image = "obstMedio2.png"),
             new SubObstacle(p = game.at(posX, posYBase + 3), image = "obstMedio2.png"),
@@ -59,7 +61,7 @@ object obstacles {
             new SubObstacle(p = game.at(posX, posYBase + 3), image = "obstMedio2.png"),
             new SubObstacle(p = game.at(posX, posYBase + 4), image = "obstMedio2.png"),
             new SubObstacle(p = game.at(posX, posYBase + 5), image = "obstMedio2.png"),
-			new SubObstacle(p = game.at(posX, posYBase + 6), image = ".png"),
+			new SubObstacle(p = game.at(posX, posYBase + 33), image = "obstMedio2.png"),
             new SubObstacle(p = game.at(posX, posYBase + 6), image = "obsTech2.png")
         ]
     }

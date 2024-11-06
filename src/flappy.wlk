@@ -37,24 +37,8 @@ object score{
     }
 }
 
-
-// Se repite codigo
-object pisoInvisible {
-   var position = game.at(3, -1) // Metodo position devuelve un objeto
-    //method image()= "image"
-    method position() = position
-    method position(newPos) {
-        position = newPos
-    }
-
-    method reaccionar(algo) {
-    		game.removeTickEvent("movimiento")
-    		game.stop()
-		}
-}
-object techoInvisible {
-  var position = game.at(3, 9.5)
-    //method image()= "img70x70.png"
+class LimitesMapa {
+    var position
     method position() = position
     method position(newPos) {
         position = newPos
@@ -66,23 +50,5 @@ object techoInvisible {
 		}
 }
 
-// class PisoInvisible inherits LimitesMapa {
-//     override method position() = game.at(3, -1)
-// }
-
-// class TechoInvisible inherits LimitesMapa {
-//     override method position() = game.at(3, 9.5)
-// }
-
-// class LimitesMapa {
-//     var position
-//     method position() = position
-//     method position(newPos) {
-//         position = newPos
-//     }
-
-//     method reaccionar(algo) {
-//     		game.removeTickEvent("movimiento")
-//     		game.stop()
-// 		}
-// }
+const pisoInvisible = new LimitesMapa(position = game.at(3, -1))
+const techoInvisible = new LimitesMapa(position = game.at(3, 9.5))

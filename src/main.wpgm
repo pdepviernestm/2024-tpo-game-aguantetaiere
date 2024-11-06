@@ -11,10 +11,12 @@ program flappyLeiGame {
     // inicializar
     game.width(17)
     game.height(10)
-    game.cellSize(70)
+    game.cellSize(70) // 70x70 hitbox
     game.title('FlappyLei')
 
     game.boardGround("fondo.png")
+
+    
 
     
 
@@ -34,7 +36,7 @@ program flappyLeiGame {
         obstacles.render()
     })
 
-    game.addVisual(flappyLei)
+    
 
     // Movimiento de los obstaculos
 		game.onTick(800, 'obstacles movement', ({
@@ -57,6 +59,8 @@ program flappyLeiGame {
     game.addVisual(techoInvisible)
 
     game.addVisual(score)
+
+    game.addVisual(flappyLei) // ponerlo despues para que vaya arriba
 
     game.start()
 

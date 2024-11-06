@@ -28,8 +28,6 @@ object score{
 
     var text = 0
 
-    method image()="imagenVacia.png"
-
     method textNumero()=text
 
     method text()=text.toString()
@@ -43,7 +41,7 @@ object score{
 // Se repite codigo
 object pisoInvisible {
    var position = game.at(3, -1) // Metodo position devuelve un objeto
-   method image()= "image"
+    //method image()= "image"
     method position() = position
     method position(newPos) {
         position = newPos
@@ -56,7 +54,7 @@ object pisoInvisible {
 }
 object techoInvisible {
   var position = game.at(3, 9.5)
-  // method image()= "img70x70.png"
+    //method image()= "img70x70.png"
     method position() = position
     method position(newPos) {
         position = newPos

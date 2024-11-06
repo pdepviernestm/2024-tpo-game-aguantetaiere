@@ -15,8 +15,8 @@ class SubObstacle {
     method moverIzquierda(){
         self.position(game.at(p.x()-1,p.y()))
 
-        if (flappyLei.position().x() == (p.x() + 3)){
-            score.text(score.textNumero()+0.1) // eso por las 10 img da 1
+        if (flappyLei.position().x() == (p.x() + 1)){
+            score.text(score.textNumero()+0.0625) // eso por las 10 img da 1, 0.1
         }
 
 
@@ -29,7 +29,7 @@ class SubObstacle {
 
     method reaccionar(algo) {
         game.removeTickEvent("movimiento")
-         game.schedule(1000, { game.stop() })
+        game.stop()
     }
 }
 
@@ -38,29 +38,33 @@ object obstacles {
     var coleccionAbajo = []
 
     // Método para crear un obstáculo dividido en 6 partes
+    // method que arme columnas genericas
     method inicializarSubObstaculosArriba(posX, posYBase) {
         return [
-            new SubObstacle(p = game.at(posX, posYBase), image = "obsTechInv.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 1), image = "obsMedio.png"),
-           // new SubObstacle(p = game.at(posX, posYBase + 2), image = "obstMedio.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 3), image = "obsMedio.png"),
-            //new SubObstacle(p = game.at(posX, posYBase + 4), image = "obstMedio.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 5), image = "obstMedio.png"),
-			new SubObstacle(p = game.at(posX, posYBase + 6), image = "obsPisoInv.png")
+            new SubObstacle(p = game.at(posX, posYBase), image = "obsTechInv2.png"),
+            new SubObstacle(p = game.at(posX, posYBase), image = ""),
+            new SubObstacle(p = game.at(posX, posYBase + 1), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 2), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 3), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 4), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 5), image = "obstMedio2.png"),
+			new SubObstacle(p = game.at(posX, posYBase + 6), image = "obstMedio2.png")
         ]
     }
 
     method inicializarSubObstaculosAbajo(posX, posYBase) {
         return [
-            new SubObstacle(p = game.at(posX, posYBase), image = "obsPiso.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 1), image = "obsMedio.png"),
-            //new SubObstacle(p = game.at(posX, posYBase + 2), image = "obstMedio.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 3), image = "obsMedio.png"),
-           // new SubObstacle(p = game.at(posX, posYBase + 4), image = "obstMedio.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 5), image = "obstMedio.png"),
-			new SubObstacle(p = game.at(posX, posYBase + 6), image = "obsTech.png")
+            new SubObstacle(p = game.at(posX, posYBase), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 1), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 2), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 3), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 4), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 5), image = "obstMedio2.png"),
+			new SubObstacle(p = game.at(posX, posYBase + 6), image = ".png"),
+            new SubObstacle(p = game.at(posX, posYBase + 6), image = "obsTech2.png")
         ]
     }
+
 
     method render() {
         const posX = 20

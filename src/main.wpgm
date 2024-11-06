@@ -24,7 +24,7 @@ program flappyLeiGame {
     keyboard.space().onPressDo({game.removeVisual(menu)})
     keyboard.space().onPressDo({gameManager.empezar()})
     
-    
+    game.start()
     
 
     //menu.desRender()

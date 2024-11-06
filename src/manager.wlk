@@ -4,7 +4,6 @@ import powerUps.*
 
 object gameManager{
   method empezar(){
-    game.start()
     game.boardGround("fondo.png")
 
     // controles

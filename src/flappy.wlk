@@ -1,5 +1,4 @@
 import wollok.game.*
-import flappyGame.*
 import obstacles.*
 import powerUps.*
 

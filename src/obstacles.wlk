@@ -1,6 +1,5 @@
 import wollok.game.*
 import flappy.*
-import flappyGame.*
 import powerUps.*
 
 class SubObstacle {

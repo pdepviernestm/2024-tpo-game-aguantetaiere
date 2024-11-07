@@ -18,8 +18,12 @@ program flappyLeiGame {
     //game.start()
 
     keyboard.space().onPressDo({menu.desRender()})
-    keyboard.space().onPressDo({game.removeVisual(menu)})
+    //keyboard.space().onPressDo({game.removeVisual(menu)})
     keyboard.space().onPressDo({gameManager.empezar()})
+
+    // controles
+    keyboard.q().onPressDo({game.stop()})
+    keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
     
     game.start()
     

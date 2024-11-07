@@ -1,3 +1,4 @@
+import manager.*
 import wollok.game.*
 import obstacles.*
 import powerUps.*
@@ -45,16 +46,23 @@ class LimitesMapa {
     }
 
     method reaccionar(algo) {
-    	game.clear()
-
+    	game.removeTickEvent("movimiento")
+        game.removeTickEvent("obstacles movement")
+        game.removeTickEvent("powerUp")
+        game.removeTickEvent("aparicion obstaculos")
+        
+        
+        
         obstacles.getCollectionArriba().forEach({o=>game.removeVisual(o)})
         obstacles.getCollectionAbajo().forEach({o=>game.removeVisual(o)})
         obstacles.getCollectionArriba().forEach({o=>obstacles.getCollectionArriba().remove(o)})
         obstacles.getCollectionAbajo().forEach({o=>obstacles.getCollectionAbajo().remove(o)})
         menu.render()
-            //game.stop()
+        score.text(0)
         flappyLei.position(flappyLei.initialPosition())
-		}
+        
+
+	}
 }
 
 const pisoInvisible = new LimitesMapa(position = game.at(3, -1))

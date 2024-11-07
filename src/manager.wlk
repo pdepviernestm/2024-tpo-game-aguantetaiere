@@ -6,9 +6,7 @@ object gameManager{
   method empezar(){
     
     
-    // controles
-    keyboard.q().onPressDo({game.stop()})
-    keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
+    
 
     // movimiento de flappy
     game.onTick(

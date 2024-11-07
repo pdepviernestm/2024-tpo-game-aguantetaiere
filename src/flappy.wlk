@@ -1,7 +1,7 @@
 import wollok.game.*
 import obstacles.*
 import powerUps.*
-
+import menu.*
 
 object flappyLei {
 
@@ -11,10 +11,10 @@ object flappyLei {
         position = newPos
     }
 
-    method initialPosition() { position = game.at(3,10) }
+    method initialPosition() = game.at(3,4)
 
     method image() = "mileiChico.png"
-
+    
 }
 
 object score{
@@ -45,10 +45,15 @@ class LimitesMapa {
     }
 
     method reaccionar(algo) {
-    		game.removeTickEvent("movimiento")
-            game.removeTickEvent("obstacles movement")
-            game.removeTickEvent("powerUp")
-            game.stop()
+    	game.clear()
+
+        obstacles.getCollectionArriba().forEach({o=>game.removeVisual(o)})
+        obstacles.getCollectionAbajo().forEach({o=>game.removeVisual(o)})
+        obstacles.getCollectionArriba().forEach({o=>obstacles.getCollectionArriba().remove(o)})
+        obstacles.getCollectionAbajo().forEach({o=>obstacles.getCollectionAbajo().remove(o)})
+        menu.render()
+            //game.stop()
+        flappyLei.position(flappyLei.initialPosition())
 		}
 }
 

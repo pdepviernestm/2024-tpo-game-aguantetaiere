@@ -1,3 +1,4 @@
+import flappy.*
 import main.*
 import wollok.game.*
 object menu{
@@ -16,32 +17,16 @@ object menu{
         game.removeVisual(instruccionTexto)
     }
     
-    var aparicion=1
-    method aparecerDesaparecerTexto(){
-        if (aparicion==1){
-            game.addVisual(instruccionTexto)
-            aparicion=0
-        }
-        else{
-            game.removeVisual(instruccionTexto)
-            aparicion=1
-        }
-    }
-
-    method activarDesactivarTexto(){
-        game.onTick(2000,"aparicion_desaparicion",{self.aparecerDesaparecerTexto()})
-    }
 }
 
 object instruccionTexto{
-    method position()=game.at(7,7)
-    method text()="Toque el espacio para empezar!"
-    method textColor()="00FF00FF"
+    method position()=game.at(5,1)
+    method image() = "TextoMenu4.png"
 }
 
 object flappyLeiTexto{
 
-    method position()=game.at(3,7.5)
+    method position()=game.at(4,7.4)
 
-    method image()="flappyLeiTexto.png"
+    method image()="FlappyTexto1.png"
 }

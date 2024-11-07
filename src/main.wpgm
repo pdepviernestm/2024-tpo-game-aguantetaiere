@@ -11,13 +11,10 @@ import manager.*
 
 program flappyLeiGame {
     // Configuración del juego
-    game.width(17)
-    game.height(10)
-    game.cellSize(70)
-    game.title('FlappyLei')
+    
     menu.render()
     
-  
+    
     //game.start()
 
     keyboard.space().onPressDo({menu.desRender()})

@@ -4,8 +4,8 @@ import powerUps.*
 
 object gameManager{
   method empezar(){
-    game.boardGround("fondo.png")
-
+    
+    
     // controles
     keyboard.q().onPressDo({game.stop()})
     keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
@@ -38,7 +38,8 @@ object gameManager{
 				})
 			})
 
-    game.onTick(15000,'powerUp',{ powerUp.reaccionarPowerUp(flappyLei)})
+    //game.onTick(15000,'powerUp',{ powerUp.reaccionarPowerUp(flappyLei)})
+    //game.onTick(30000, name, action)
 
     // manejo de colisiones
     game.onCollideDo(flappyLei, {cosa => cosa.reaccionar(flappyLei)})
@@ -48,7 +49,7 @@ object gameManager{
     game.addVisual(pisoInvisible)
     game.addVisual(techoInvisible)
     game.addVisual(score)
-    game.addVisual(powerUp)
+    //game.addVisual(powerUp)
     game.addVisual(flappyLei)
 
 

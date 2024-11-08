@@ -1,0 +1,39 @@
+// src/main.wpgm
+// src/main.wpgm
+import wollok.game.*
+import flappy.*
+//import flappyGame.*
+import obstacles.*
+import powerUps.*
+import menu.*
+import manager.*
+
+
+program flappyLeiGame {
+    // Configuración del juego
+    
+    menu.render()
+    
+    
+    //game.start()
+
+    keyboard.space().onPressDo({menu.desRender()})
+    //keyboard.space().onPressDo({game.removeVisual(menu)})
+    keyboard.space().onPressDo({gameManager.empezar()})
+
+    // controles
+    keyboard.q().onPressDo({game.stop()})
+    keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
+    keyboard.up().onPressDo({game.sound("zurdo.mp3").play()})
+    
+    game.start()
+    
+    
+    //menu.desRender()
+    //gameManager.manager()
+}
+
+
+
+
+

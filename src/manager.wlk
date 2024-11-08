@@ -35,10 +35,9 @@ object gameManager{
 				obstacle => obstacle.moverIzquierda()
 				})
 			})
-
-    //game.onTick(15000,'powerUp',{ powerUp.reaccionarPowerUp(flappyLei)})
-    //game.onTick(30000, name, action)
-
+    const lali = new Lali()
+    game.onTick(1000, 'Lali render', {})
+    game.onTick(500, 'movimiento lali', {lali.moverIzquierda()})
     // manejo de colisiones
     game.onCollideDo(flappyLei, {cosa => cosa.reaccionar(flappyLei)})
 
@@ -47,7 +46,6 @@ object gameManager{
     game.addVisual(pisoInvisible)
     game.addVisual(techoInvisible)
     game.addVisual(score)
-    //game.addVisual(powerUp)
     game.addVisual(flappyLei)
 
 
@@ -56,5 +54,13 @@ object gameManager{
     const rain = game.sound("flappybird.mp3")
     rain.shouldLoop(true)
     game.schedule(500, { rain.play()} )
+  }
+
+  method eliminar(objeto){
+    game.removeVisual(objeto)
+  }
+
+  method crear(objeto){
+    game.addVisual(objeto)
   }
 }

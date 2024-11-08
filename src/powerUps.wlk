@@ -1,3 +1,4 @@
+import manager.*
 // Implementará los objetos especiales (power-ups) que afectan a Milei con diferentes efectos.
 import wollok.game.*
 import flappy.*
@@ -24,14 +25,43 @@ import obstacles.*
  //   }
 
 //}
-object lali {
-   // var property position
+
+class Lali{
+    
+}
+
+
+
+ object lali {
+    const posY = [3,4,5,6,7,8,9].anyOne()
+    var property p= game.at(23,posY)
+    method image()  = "LaliChica.png"
+
+     method position() = p
+    method position(newPosition) {p=newPosition}
+
+    var property laliActivada = 0
     method render () {
-        //const position = (20,)
+        new Lali()
+        game.addVisual(lali)
     }
-    method imagen () = "LaliChica.png"
+    
+    method laliActivada(num){
+        laliActivada=num
+    } 
 
     method reaccionarLali(algo) {
-
+        self.laliActivada(1)
+        score.text(score.textNumero()-1)
+        self.laliActivada(0)
     }
+    method moverIzquierda() {
+        self.p(game.at(p.x()-1,p.y()))
+        if (p.x() <= 3){
+            gameManager.eliminar(self)
+        }
+    }
+
+   
 }
+

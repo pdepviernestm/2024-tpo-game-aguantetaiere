@@ -38,31 +38,13 @@ object score{
     }
 }
 
-class LimitesMapa {
+class LimitesMapa inherits Moricion{
     var position
     method position() = position
     method position(newPos) {
         position = newPos
     }
 
-    method reaccionar(algo) {
-    	game.removeTickEvent("movimiento")
-        game.removeTickEvent("obstacles movement")
-        game.removeTickEvent("powerUp")
-        game.removeTickEvent("aparicion obstaculos")
-        
-        
-        
-        obstacles.getCollectionArriba().forEach({o=>game.removeVisual(o)})
-        obstacles.getCollectionAbajo().forEach({o=>game.removeVisual(o)})
-        obstacles.getCollectionArriba().forEach({o=>obstacles.getCollectionArriba().remove(o)})
-        obstacles.getCollectionAbajo().forEach({o=>obstacles.getCollectionAbajo().remove(o)})
-        menu.render()
-        score.text(0)
-        flappyLei.position(flappyLei.initialPosition())
-        
-
-	}
 }
 
 const pisoInvisible = new LimitesMapa(position = game.at(3, -1))

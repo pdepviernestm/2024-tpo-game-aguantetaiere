@@ -35,12 +35,12 @@ object gameManager{
 				obstacle => obstacle.moverIzquierda()
 				})
 			})
-    const lali = new Lali()
-    game.onTick(1000, 'Lali render', {})
-    game.onTick(500, 'movimiento lali', {lali.moverIzquierda()})
+
+    game.onTick(2000, 'Lali render', {lali.render()})
+    game.onTick(500, 'movimiento lali', {lali.listaLalis().forEach({l=>l.moverIzquierda()})})
+
     // manejo de colisiones
     game.onCollideDo(flappyLei, {cosa => cosa.reaccionar(flappyLei)})
-
 
     // Visuales adicionales
     game.addVisual(pisoInvisible)

@@ -27,41 +27,57 @@ import obstacles.*
 //}
 
 class Lali{
-    
+    var property pos
+    method image()  = "LaliChica.png"
+    method position() = pos
+    method position(newPosition) {pos=newPosition}
+    var reaccionado = 0
+    method reaccionar(algo) {
+        if (reaccionado == 0){
+            score.text(score.textNumero()+1)
+            reaccionado+=1
+        }  
+    }
+
+    method moverIzquierda(){
+        self.position(game.at(pos.x()-1,pos.y()))
+
+        if (pos.x() <= -3){
+            lali.listaLalis().remove(self)
+            game.removeVisual(self)
+        }
+    }
+
 }
 
 
 
  object lali {
-    const posY = [3,4,5,6,7,8,9].anyOne()
-    var property p= game.at(23,posY)
-    method image()  = "LaliChica.png"
+    
+    var property listaLalis = []
 
-     method position() = p
-    method position(newPosition) {p=newPosition}
+    
 
-    var property laliActivada = 0
     method render () {
-        new Lali()
-        game.addVisual(lali)
+        var posY = [3,4,5,6,7,8,9].anyOne()
+        var p = game.at(23,posY) 
+        var lDeposito = new Lali(pos=p)
+        game.addVisual(lDeposito)
+        listaLalis.add(lDeposito)
     }
     
-    method laliActivada(num){
-        laliActivada=num
-    } 
 
-    method reaccionarLali(algo) {
-        self.laliActivada(1)
-        score.text(score.textNumero()-1)
-        self.laliActivada(0)
-    }
-    method moverIzquierda() {
+
+    /*method moverIzquierda() {
         self.p(game.at(p.x()-1,p.y()))
-        if (p.x() <= 3){
+        
+        lDeposito.pos(game.at(lDeposito.pos().x()-1,lDeposito.pos().y()))
+
+        if (lDeposito.pos().x() <= 3){
             gameManager.eliminar(self)
         }
-    }
+    }*/   
 
-   
 }
+
 

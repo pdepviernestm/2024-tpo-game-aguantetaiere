@@ -2,7 +2,30 @@ import wollok.game.*
 import flappy.*
 import powerUps.*
 import menu.*
-class SubObstacle {
+
+class Moricion {
+    method reaccionar(algo) {
+        game.removeTickEvent("movimiento")
+        game.removeTickEvent("obstacles movement")
+        game.removeTickEvent("powerUp")
+        game.removeTickEvent("aparicion obstaculos")
+        game.removeTickEvent("Lali render")
+        game.removeTickEvent("movimiento lali")
+
+        obstacles.getCollectionArriba().forEach({o=>game.removeVisual(o)})
+        obstacles.getCollectionAbajo().forEach({o=>game.removeVisual(o)})
+        obstacles.getCollectionArriba().forEach({o=>obstacles.getCollectionArriba().remove(o)})
+        obstacles.getCollectionAbajo().forEach({o=>obstacles.getCollectionAbajo().remove(o)})
+        lali.listaLalis().forEach({l=>game.removeVisual(l)})
+        lali.listaLalis().forEach({l=>lali.listaLalis().remove(l)})
+        flappyLei.position(flappyLei.initialPosition())
+        menu.render()
+        score.text(0)
+
+    }
+}
+
+class SubObstacle inherits Moricion{
     var property p
     var property image
     
@@ -27,22 +50,7 @@ class SubObstacle {
         }
 
     }
-
-    method reaccionar(algo) {
-        game.removeTickEvent("movimiento")
-        game.removeTickEvent("obstacles movement")
-        game.removeTickEvent("powerUp")
-        game.removeTickEvent("aparicion obstaculos")
-
-        obstacles.getCollectionArriba().forEach({o=>game.removeVisual(o)})
-        obstacles.getCollectionAbajo().forEach({o=>game.removeVisual(o)})
-        obstacles.getCollectionArriba().forEach({o=>obstacles.getCollectionArriba().remove(o)})
-        obstacles.getCollectionAbajo().forEach({o=>obstacles.getCollectionAbajo().remove(o)})
-        menu.render()
-        score.text(0)
-        flappyLei.position(flappyLei.initialPosition())
-
-    }
+    
 }
 
 object obstacles {

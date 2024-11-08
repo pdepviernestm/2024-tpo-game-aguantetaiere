@@ -4,9 +4,6 @@ import powerUps.*
 
 object gameManager{
   method empezar(){
-    
-    
-    
 
     // movimiento de flappy
     game.onTick(
@@ -49,11 +46,6 @@ object gameManager{
     game.addVisual(flappyLei)
 
 
-// Musica
-// HACER MUSICA NORMAL DE FONDO HASTA QUE PASEN 15 SEGUNDOS
-    const rain = game.sound("flappybird.mp3")
-    rain.shouldLoop(true)
-    game.schedule(500, { rain.play()} )
   }
 
   method eliminar(objeto){

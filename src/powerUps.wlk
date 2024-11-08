@@ -34,7 +34,8 @@ class Lali{
     var reaccionado = 0
     method reaccionar(algo) {
         if (reaccionado == 0){
-            score.text(score.textNumero()+1)
+            game.sound("fanatico.mp3").play()
+            score.text(score.textNumero()-3)
             reaccionado+=1
         }  
     }

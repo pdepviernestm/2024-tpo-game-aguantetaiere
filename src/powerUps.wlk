@@ -31,13 +31,13 @@ class Lali{
     method image()  = "LaliChica.png"
     method position() = pos
     method position(newPosition) {pos=newPosition}
-    var reaccionado = 0
+    
     method reaccionar(algo) {
-        if (reaccionado == 0){
+        
             game.sound("fanatico.mp3").play()
             score.text(score.textNumero()-3)
-            reaccionado+=1
-        }  
+            game.removeVisual(self)
+            lali.listaLalis().remove(self)
     }
 
     method moverIzquierda(){

@@ -7,9 +7,9 @@ object menu{
         cancion.play()
         cancion.shouldLoop(true)
         cancion.volume(0.1)
-        game.width(17)
-        game.height(10)
-        game.cellSize(70)
+        game.width(170)
+        game.height(100)
+        game.cellSize(7)
         game.title('FlappyLei')
         game.boardGround("fondo.png")
         game.addVisual(flappyLeiTexto)
@@ -24,13 +24,13 @@ object menu{
 }
 
 object instruccionTexto{
-    method position()=game.at(5,1)
+    method position()=game.at(50,10)
     method image() = "TextoMenu4.png"
 }
 
 object flappyLeiTexto{
 
-    method position()=game.at(4,7.4)
+    method position()=game.at(40,74)
 
     method image()="FlappyTexto1.png"
 }

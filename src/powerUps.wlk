@@ -35,15 +35,15 @@ class Lali{
     method reaccionar(algo) {
         
             game.sound("fanatico.mp3").play()
-            score.text(score.textNumero()-3)
+            score.text(score.textNumero()-30)
             game.removeVisual(self)
             lali.listaLalis().remove(self)
     }
 
     method moverIzquierda(){
-        self.position(game.at(pos.x()-1,pos.y()))
+        self.position(game.at(pos.x()-10,pos.y()))
 
-        if (pos.x() <= -3){
+        if (pos.x() <= -30){
             lali.listaLalis().remove(self)
             game.removeVisual(self)
         }
@@ -60,8 +60,8 @@ class Lali{
     
 
     method render () {
-        var posY = [3,4,5,6,7,8,9].anyOne()
-        var p = game.at(23,posY) 
+        var posY = [30,40,50,60,70,80,90].anyOne()
+        var p = game.at(230,posY) 
         var lDeposito = new Lali(pos=p)
         game.addVisual(lDeposito)
         listaLalis.add(lDeposito)

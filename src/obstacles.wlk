@@ -62,34 +62,34 @@ object obstacles {
     method inicializarSubObstaculosArriba(posX, posYBase) {
         return [
             new SubObstacle(p = game.at(posX, posYBase), image = "obsTechInv2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 33), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 1), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 2), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 3), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 4), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 5), image = "obstMedio2.png"),
-			new SubObstacle(p = game.at(posX, posYBase + 6), image = "obstMedio2.png")
+            new SubObstacle(p = game.at(posX, posYBase + 330), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 10), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 20), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 30), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 40), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 50), image = "obstMedio2.png"),
+			new SubObstacle(p = game.at(posX, posYBase + 60), image = "obstMedio2.png")
         ]
     }
 
     method inicializarSubObstaculosAbajo(posX, posYBase) {
         return [
             new SubObstacle(p = game.at(posX, posYBase), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 1), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 2), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 3), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 4), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 5), image = "obstMedio2.png"),
-			new SubObstacle(p = game.at(posX, posYBase + 33), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 6), image = "obsTech2.png")
+            new SubObstacle(p = game.at(posX, posYBase + 10), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 20), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 30), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 40), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 50), image = "obstMedio2.png"),
+			new SubObstacle(p = game.at(posX, posYBase + 330), image = "obstMedio2.png"),
+            new SubObstacle(p = game.at(posX, posYBase + 60), image = "obsTech2.png")
         ]
     }
 
 
     method render() {
-        const posX = 20
-        const posYArribaBase = [5, 6, 7, 8, 9, 10].anyOne()
-        const posYAbajoBase = posYArribaBase - 10
+        const posX = 200
+        const posYArribaBase = [50, 60, 70, 80, 90, 100].anyOne()
+        const posYAbajoBase = posYArribaBase - 100
 
         // Crear las partes del obstáculo en la parte superior
         const partesArriba = self.inicializarSubObstaculosArriba(posX, posYArribaBase)

@@ -6,7 +6,7 @@ import menu.*
 
 object flappyLei {
 
-    var position = game.at(3, 4) // Metodo position devuelve un objeto
+    var position = game.at(30, 40) // Metodo position devuelve un objeto
     method position() = position
     method position(newPos) {
         position = newPos
@@ -19,7 +19,7 @@ object flappyLei {
 }
 
 object score{
-    var position = game.at(7, 8) 
+    var position = game.at(70, 80) 
     method position() = position
     method position(newPos) {
         position = newPos
@@ -47,5 +47,5 @@ class LimitesMapa inherits Moricion{
 
 }
 
-const pisoInvisible = new LimitesMapa(position = game.at(3, -1))
-const techoInvisible = new LimitesMapa(position = game.at(3, 9.5))
+const pisoInvisible = new LimitesMapa(position = game.at(30, -10))
+const techoInvisible = new LimitesMapa(position = game.at(30, 95))

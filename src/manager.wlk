@@ -7,7 +7,7 @@ object gameManager{
 
     // movimiento de flappy
     game.onTick(
-		2000,
+		1000,
 		"movimiento",
 		{ flappyLei.position(flappyLei.position().down(1)) 
     })
@@ -33,7 +33,7 @@ object gameManager{
 				})
 			})
 
-    game.onTick(2000, 'Lali render', {lali.render()})
+    game.onTick(10000, 'Lali render', {lali.render()})
     game.onTick(500, 'movimiento lali', {lali.listaLalis().forEach({l=>l.moverIzquierda()})})
 
     // manejo de colisiones

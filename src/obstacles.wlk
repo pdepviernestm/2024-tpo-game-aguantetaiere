@@ -1,9 +1,11 @@
+import manager.*
 import wollok.game.*
 import flappy.*
 import powerUps.*
 import menu.*
 
 class Moricion {
+
     method reaccionar(algo) {
         game.removeTickEvent("movimiento")
         game.removeTickEvent("obstacles movement")
@@ -11,14 +13,20 @@ class Moricion {
         game.removeTickEvent("aparicion obstaculos")
         game.removeTickEvent("Lali render")
         game.removeTickEvent("movimiento lali")
+        game.removeTickEvent("BancoCentral render")
+        game.removeTickEvent("movimiento bancoCentral")
+        //game.removeTickEvent("movimiento2")
 
         obstacles.getCollectionArriba().forEach({o=>game.removeVisual(o)})
         obstacles.getCollectionAbajo().forEach({o=>game.removeVisual(o)})
         obstacles.getCollectionArriba().forEach({o=>obstacles.getCollectionArriba().remove(o)})
         obstacles.getCollectionAbajo().forEach({o=>obstacles.getCollectionAbajo().remove(o)})
-        lali.listaLalis().forEach({l=>game.removeVisual(l)})
-        lali.listaLalis().forEach({l=>lali.listaLalis().remove(l)})
+        lali.lista().forEach({l=>game.removeVisual(l)})
+        lali.lista().forEach({l=>lali.lista().remove(l)})
+        bancoCentral.lista().forEach({b=>game.removeVisual(b)})
+        bancoCentral.lista().forEach({b=>bancoCentral.lista().remove(b)})
         flappyLei.position(flappyLei.initialPosition())
+        // gameManager.stopCancion(cancionLali.cancion())
         menu.render()
         score.text(0)
 
@@ -84,7 +92,6 @@ object obstacles {
             new SubObstacle(p = game.at(posX, posYBase + 6), image = "obsTech2.png")
         ]
     }
-
 
     method render() {
         const posX = 20

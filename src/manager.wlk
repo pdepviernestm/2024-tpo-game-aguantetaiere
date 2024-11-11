@@ -3,8 +3,9 @@ import obstacles.*
 import powerUps.*
 
 object gameManager{
+  var property personajeActual=lali
   method empezar(){
-
+    
     // movimiento de flappy
     game.onTick(
 		1000,
@@ -33,8 +34,10 @@ object gameManager{
 				})
 			})
 
-    game.onTick(10000, 'Lali render', {lali.render()})
-    game.onTick(500, 'movimiento lali', {lali.listaLalis().forEach({l=>l.moverIzquierda()})})
+    game.onTick(20000, 'Lali render', {lali.render()})
+    game.onTick(1000, 'BancoCentral render', {bancoCentral.render()})
+    game.onTick(500,'movimiento bancoCentral',{bancoCentral.lista().forEach({b => b.moverIzquierda(b)})})
+    game.onTick(500, 'movimiento lali', {lali.lista().forEach({l => l.moverIzquierda(l)})})
 
     // manejo de colisiones
     game.onCollideDo(flappyLei, {cosa => cosa.reaccionar(flappyLei)})
@@ -46,6 +49,10 @@ object gameManager{
     game.addVisual(flappyLei)
 
 
+  }
+
+  method personajeActual(n){
+    personajeActual=n
   }
 
   method eliminar(objeto){

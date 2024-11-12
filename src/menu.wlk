@@ -10,8 +10,7 @@ object menu{
         game.width(17)
         game.height(10)
         game.cellSize(70)
-        game.title('FlappyLei')
-        game.boardGround("fondo.png")
+        
         game.addVisual(flappyLeiTexto)
         game.addVisual(instruccionTexto)
     }

@@ -17,6 +17,7 @@ class Moricion {
         game.removeTickEvent("movimiento bancoCentral")*/
         game.removeTickEvent("Power up render")
         game.removeTickEvent("Power up movimiento")
+        game.removeTickEvent("cambiar invertido")
 
         //game.removeTickEvent("movimiento2")
 
@@ -24,13 +25,14 @@ class Moricion {
         obstacles.getCollectionAbajo().forEach({o=>game.removeVisual(o)})
         obstacles.getCollectionArriba().forEach({o=>obstacles.getCollectionArriba().remove(o)})
         obstacles.getCollectionAbajo().forEach({o=>obstacles.getCollectionAbajo().remove(o)})
+        powerUp.vaciarLista()
         lali.lista().forEach({l=>game.removeVisual(l)})
         lali.lista().forEach({l=>lali.lista().remove(l)})
-        powerUp.lista().forEach({p=>p.lista().remove(p)})
         bancoCentral.lista().forEach({b=>game.removeVisual(b)})
         bancoCentral.lista().forEach({b=>bancoCentral.lista().remove(b)})
 
         flappyLei.position(flappyLei.initialPosition())
+        flappyLei.setInvertido(false)
         // gameManager.stopCancion(cancionLali.cancion())
         menu.render()
         score.text(0)

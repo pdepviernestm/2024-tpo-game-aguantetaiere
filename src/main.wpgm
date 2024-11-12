@@ -11,7 +11,8 @@ import manager.*
 
 program flappyLeiGame {
     // Configuración del juego
-    
+    game.title('FlappyLei')
+    game.boardGround("fondo.png")
     menu.render()
     
     

@@ -104,7 +104,9 @@ class BancoCentral inherits PowerUps{
 
 object bancoCentral {
   var property lista = []
-
+    method vaciarLista(){
+        lista=[]
+    }
     method render () {
         var posY = [3,4,5,6,7,8,9].anyOne()
         var p = game.at(23,posY) 
@@ -119,6 +121,11 @@ object powerUp{
     var property lista=[]
     var property personajeActual =lali
     var listaPowerUps=[bancoCentral,lali]
+
+    method vaciarLista(){
+        lista=[]
+    }
+
     method render(){
         personajeActual=listaPowerUps.anyOne()
         personajeActual.render()

@@ -1,3 +1,4 @@
+// src/powerUps.wlk
 import manager.*
 // Implementará los objetos especiales (power-ups) que afectan a Milei con diferentes efectos.
 import wollok.game.*
@@ -54,6 +55,8 @@ class Lali inherits PowerUps{
             cancion.play()
             score.text(score.textNumero()-3)
             game.removeVisual(self)
+            
+            powerUp.lista().remove(self)
             lali.lista().remove(self)
     }
 
@@ -69,6 +72,7 @@ object lali {
         var lDeposito = new Lali(pos=p)
         game.addVisual(lDeposito)
         lista.add(lDeposito)
+        powerUp.lista().add(lDeposito)
     }
 
 }
@@ -87,6 +91,8 @@ class BancoCentral inherits PowerUps{
 
      keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().down(2)) })
 
+     game.removeVisual(self)
+     powerUp.lista().remove(self)
      bancoCentral.lista().remove(self)
     }
 }
@@ -100,17 +106,23 @@ object bancoCentral {
         var banco = new BancoCentral(pos=p)
         game.addVisual(banco)
         lista.add(banco)
+        powerUp.lista().add(banco)
     }
 }
 
-/*object powerUp{
+object powerUp{
+    var property lista=[]
+    var property personajeActual =lali
     var listaPowerUps=[bancoCentral,lali]
     method render(){
-        var personajeActual=listaPowerUps.randomize().first()
-        gameManager.personajeActual(personajeActual)
+        personajeActual=listaPowerUps.anyOne()
         personajeActual.render()
     }
-}*/
+    
+    method moverIzquierda(){
+        lista.forEach({p=>p.moverIzquierda(p)})
+    }
+}
 
  
 

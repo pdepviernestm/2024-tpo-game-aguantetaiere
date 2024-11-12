@@ -11,10 +11,13 @@ class Moricion {
         game.removeTickEvent("obstacles movement")
         game.removeTickEvent("powerUp")
         game.removeTickEvent("aparicion obstaculos")
-        game.removeTickEvent("Lali render")
+        /*game.removeTickEvent("Lali render")
         game.removeTickEvent("movimiento lali")
         game.removeTickEvent("BancoCentral render")
-        game.removeTickEvent("movimiento bancoCentral")
+        game.removeTickEvent("movimiento bancoCentral")*/
+        game.removeTickEvent("Power up render")
+        game.removeTickEvent("Power up movimiento")
+
         //game.removeTickEvent("movimiento2")
 
         obstacles.getCollectionArriba().forEach({o=>game.removeVisual(o)})
@@ -23,8 +26,10 @@ class Moricion {
         obstacles.getCollectionAbajo().forEach({o=>obstacles.getCollectionAbajo().remove(o)})
         lali.lista().forEach({l=>game.removeVisual(l)})
         lali.lista().forEach({l=>lali.lista().remove(l)})
+        powerUp.lista().forEach({p=>p.lista().remove(p)})
         bancoCentral.lista().forEach({b=>game.removeVisual(b)})
         bancoCentral.lista().forEach({b=>bancoCentral.lista().remove(b)})
+
         flappyLei.position(flappyLei.initialPosition())
         // gameManager.stopCancion(cancionLali.cancion())
         menu.render()

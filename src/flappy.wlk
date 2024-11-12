@@ -8,6 +8,31 @@ object flappyLei {
 
     var position = game.at(3, 4) // Metodo position devuelve un objeto
     method position() = position
+
+    var property invertido = false
+
+    method setInvertido(bool){
+        invertido=bool
+    }
+
+    method saltar(){
+        if (!invertido){
+            self.position(self.position().up(1))
+        }
+        else{
+            self.position(self.position().down(1))
+        }
+    }
+
+    method bajar(){
+        if (invertido){
+            self.position(self.position().up(1))
+        }
+        else{
+            self.position(self.position().down(1))
+        }
+    }
+
     method position(newPos) {
         position = newPos
     }

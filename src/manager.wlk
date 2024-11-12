@@ -10,7 +10,7 @@ object gameManager{
     game.onTick(
 		1000,
 		"movimiento",
-		{ flappyLei.position(flappyLei.position().down(1)) 
+		{ flappyLei.bajar() 
     })
 
     // Aparicion de los obstaculos
@@ -39,7 +39,7 @@ object gameManager{
     game.onTick(500,'movimiento bancoCentral',{bancoCentral.lista().forEach({b => b.moverIzquierda(b)})})
     game.onTick(500, 'movimiento lali', {lali.lista().forEach({l => l.moverIzquierda(l)})})*/
 
-    game.onTick(2000,'Power up render',{powerUp.render()})
+    game.onTick(8000,'Power up render',{powerUp.render()})
     game.onTick(500,'Power up movimiento',{powerUp.moverIzquierda()})
 
     // manejo de colisiones

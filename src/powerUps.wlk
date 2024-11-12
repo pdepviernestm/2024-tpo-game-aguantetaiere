@@ -83,18 +83,22 @@ class BancoCentral inherits PowerUps{
     override method image()  = "img70x70.png"
 
     override method reaccionar(algo) {
-         game.removeTickEvent("movimiento")
-         game.onTick(
+        flappyLei.setInvertido(true)
+         //game.removeTickEvent("movimiento")
+         /*game.onTick(
  		2000,
  		"movimiento2",
  		{ flappyLei.position(flappyLei.position().up(1)) 
-     })
+     })*/
 
-     keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().down(2)) })
+     //keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().down(2)) })
 
      game.removeVisual(self)
      //powerUp.lista().remove(self)
      bancoCentral.lista().remove(self)
+
+    game.onTick(6000, 'cambiar invertido', {flappyLei.setInvertido(false)}) // Que a los 6 segs dejen de estar invertidos los controles
+
     }
 }
 

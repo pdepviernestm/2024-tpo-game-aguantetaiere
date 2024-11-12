@@ -23,7 +23,8 @@ program flappyLeiGame {
 
     // controles
     keyboard.q().onPressDo({game.stop()})
-    keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
+    //keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
+    keyboard.up().onPressDo({ flappyLei.saltar()})
     keyboard.up().onPressDo({game.sound("zurdo.mp3").play()})
     
     game.start()

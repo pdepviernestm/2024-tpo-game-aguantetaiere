@@ -39,6 +39,7 @@ class PowerUps{
         self.position(game.at(pos.x()-1,pos.y()))
 
         if (pos.x() <= -3){
+            powerUp.lista().remove(powerUp.lista().first())
             personaje.lista().remove(self)
             game.removeVisual(self)
         }
@@ -56,7 +57,7 @@ class Lali inherits PowerUps{
             score.text(score.textNumero()-3)
             game.removeVisual(self)
             
-            powerUp.lista().remove(self)
+            //powerUp.lista().remove(self)
             lali.lista().remove(self)
     }
 
@@ -92,7 +93,7 @@ class BancoCentral inherits PowerUps{
      keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().down(2)) })
 
      game.removeVisual(self)
-     powerUp.lista().remove(self)
+     //powerUp.lista().remove(self)
      bancoCentral.lista().remove(self)
     }
 }

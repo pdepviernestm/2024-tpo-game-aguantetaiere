@@ -33,7 +33,7 @@ class PowerUps{
     method position() = pos
     method position(newPosition) {pos=newPosition}
     
-    method reaccionar(algo)
+    method reaccionar()
 
     method moverIzquierda(personaje){
         self.position(game.at(pos.x()-1,pos.y()))
@@ -50,7 +50,7 @@ class Lali inherits PowerUps{
     
     override method image()  = "LaliChica.png"
     
-    override method reaccionar(algo) {
+    override method reaccionar() {
             const cancion = game.sound("fanatico.mp3")
             cancion.volume(0.1)
             cancion.play()
@@ -82,7 +82,7 @@ class BancoCentral inherits PowerUps{
 
     override method image()  = "img70x70.png"
 
-    override method reaccionar(algo) {
+    override method reaccionar() {
         flappyLei.setInvertido(true)
          //game.removeTickEvent("movimiento")
          /*game.onTick(

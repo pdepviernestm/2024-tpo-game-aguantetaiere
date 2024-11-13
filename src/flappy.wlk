@@ -52,18 +52,25 @@ object score{
 
 
     var text = 0
+    var digitImages=[] //Lista de imagenes de los digitos
 
     method textNumero()=text
 
     method text()=text.toString()
-    method textColor()="00FF00FF"
-
+    
     method text(nuevoScore){
         text = nuevoScore
+    
     }
+    
+
+
+
+    
+    
 }
 
-class LimitesMapa inherits Moricion{
+class LimitesMapa inherits Morir{
     var position
     method position() = position
     method position(newPos) {

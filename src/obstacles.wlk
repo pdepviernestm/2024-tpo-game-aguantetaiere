@@ -1,16 +1,17 @@
+
 import manager.*
 import wollok.game.*
 import flappy.*
 import powerUps.*
 import menu.*
 
-class Moricion {
+class Morir {
 
-    method reaccionar(algo) {
+    method reaccionar() {
         game.removeTickEvent("movimiento")
         game.removeTickEvent("obstacles movement")
         game.removeTickEvent("powerUp")
-        game.removeTickEvent("aparicion obstaculos")
+        game.removeTickEvent("aparicion obstacles")
         /*game.removeTickEvent("Lali render")
         game.removeTickEvent("movimiento lali")
         game.removeTickEvent("BancoCentral render")
@@ -21,10 +22,10 @@ class Moricion {
 
         //game.removeTickEvent("movimiento2")
 
-        obstacles.getCollectionArriba().forEach({o=>game.removeVisual(o)})
-        obstacles.getCollectionAbajo().forEach({o=>game.removeVisual(o)})
-        obstacles.getCollectionArriba().forEach({o=>obstacles.getCollectionArriba().remove(o)})
-        obstacles.getCollectionAbajo().forEach({o=>obstacles.getCollectionAbajo().remove(o)})
+        obstaclesManager.getCollectionArriba().forEach({o=>game.removeVisual(o)})
+        obstaclesManager.getCollectionAbajo().forEach({o=>game.removeVisual(o)})
+        obstaclesManager.getCollectionArriba().forEach({o=>obstaclesManager.getCollectionArriba().remove(o)})
+        obstaclesManager.getCollectionAbajo().forEach({o=>obstaclesManager.getCollectionAbajo().remove(o)})
         powerUp.vaciarLista()
         lali.lista().forEach({l=>game.removeVisual(l)})
         lali.lista().forEach({l=>lali.lista().remove(l)})
@@ -40,9 +41,16 @@ class Moricion {
     }
 }
 
-class SubObstacle inherits Moricion{
+
+
+class Obstacle {
+    const subs = []
+}
+
+class SubObstacle inherits Morir{
     var property p
     var property image
+    var scored = false 
     
     method position() = p
     method position(newPosition) { p = newPosition }
@@ -53,14 +61,15 @@ class SubObstacle inherits Moricion{
 
         self.position(game.at(p.x()-1,p.y()))
 
-        // conteo de puntuacion
-        if (flappyLei.position().x() == (p.x() + 1)){
-            score.text(score.textNumero()+0.0625) // eso por las 10 img da 1, 0.1
+       
+        // Verificar si Milei pasó el obstáculo y aumentar el puntaje solo una vez
+        if (!scored && flappyLei.position().x() > p.x()) {
+            scored = true // Marcamos que este obstáculo ya fue pasado y puntuado
+            score.text(score.textNumero() + 1) // Aumentar el puntaje en 1
         }
-
         // romper obstaculos cuando se vvan del mapa
         if (p.x()<=-4){
-            obstacles.getCollectionAbajo().remove(self)
+            obstaclesManager.getCollectionAbajo().remove(self)
             game.removeVisual(self)
         }
 
@@ -68,36 +77,25 @@ class SubObstacle inherits Moricion{
     
 }
 
-object obstacles {
+object obstaclesManager {
     var coleccionArriba = []
     var coleccionAbajo = []
 
     // Método para crear un obstáculo dividido en 6 partes
     // method que arme columnas genericas
     method inicializarSubObstaculosArriba(posX, posYBase) {
-        return [
-            new SubObstacle(p = game.at(posX, posYBase), image = "obsTechInv2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 33), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 1), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 2), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 3), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 4), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 5), image = "obstMedio2.png"),
-			new SubObstacle(p = game.at(posX, posYBase + 6), image = "obstMedio2.png")
-        ]
+        const partesArriba= []
+        [1,2,3,4,5,6].forEach({x =>  partesArriba.add(new SubObstacle(p = game.at(posX, posYBase + x), image = "obstMedio2.png"))})
+        partesArriba.add(new SubObstacle(p = game.at(posX, posYBase), image = "obsTechInv2.png"))
+        return (partesArriba)
     }
 
     method inicializarSubObstaculosAbajo(posX, posYBase) {
-        return [
-            new SubObstacle(p = game.at(posX, posYBase), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 1), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 2), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 3), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 4), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 5), image = "obstMedio2.png"),
-			new SubObstacle(p = game.at(posX, posYBase + 33), image = "obstMedio2.png"),
-            new SubObstacle(p = game.at(posX, posYBase + 6), image = "obsTech2.png")
-        ]
+        const partesAbajo = []
+        [0,1,2,3,4,5].forEach({x =>  partesAbajo.add(new SubObstacle(p = game.at(posX, posYBase + x), image = "obstMedio2.png"))})
+        partesAbajo.add(new SubObstacle(p = game.at(posX, posYBase + 6), image = "obsTech2.png"))
+        return (partesAbajo)
+
     }
 
     method render() {
@@ -128,4 +126,5 @@ object obstacles {
         coleccionArriba.forEach({ parte => parte.moverIzquierda() })
         coleccionAbajo.forEach({ parte => parte.moverIzquierda() })
     }
+   
 }

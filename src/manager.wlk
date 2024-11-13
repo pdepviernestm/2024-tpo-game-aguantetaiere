@@ -1,3 +1,4 @@
+import menu.*
 import flappy.*
 import obstacles.*
 import powerUps.*
@@ -5,7 +6,7 @@ import powerUps.*
 object gameManager{
   var property personajeActual=lali
   method empezar(){
-    
+    game.addVisual(flappyLei)
     // movimiento de flappy
     game.onTick(
 		1000,
@@ -13,23 +14,23 @@ object gameManager{
 		{ flappyLei.bajar() 
     })
 
-    // Aparicion de los obstaculos
-    obstacles.render()
+    // Aparicion de los obstacles
+    obstaclesManager.render()
     
-    game.onTick(4500,"aparicion obstaculos",{
-        obstacles.render()
+    game.onTick(4500,"aparicion obstacles",{
+        obstaclesManager.render()
     })
 
 
-    // Movimiento de los obstaculos
+    // Movimiento de los obstacles
 		game.onTick(500, 'obstacles movement', ({
-			obstacles.getCollectionArriba().forEach({ 
+			obstaclesManager.getCollectionArriba().forEach({ 
 				obstacle => obstacle.moverIzquierda()
 				})
 			}))
 
 		game.onTick(500, 'obstacles movement', {
-			obstacles.getCollectionAbajo().forEach({ 
+			obstaclesManager.getCollectionAbajo().forEach({ 
 				obstacle => obstacle.moverIzquierda()
 				})
 			})
@@ -41,9 +42,10 @@ object gameManager{
 
     game.onTick(8000,'Power up render',{powerUp.render()})
     game.onTick(500,'Power up movimiento',{powerUp.moverIzquierda()})
+    
 
     // manejo de colisiones
-    game.onCollideDo(flappyLei, {cosa => cosa.reaccionar(flappyLei)})
+    game.onCollideDo(flappyLei, {cosa => cosa.reaccionar()})
 
     // Visuales adicionales
     game.addVisual(pisoInvisible)

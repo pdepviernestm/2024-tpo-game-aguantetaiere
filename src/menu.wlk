@@ -13,6 +13,7 @@ object menu{
         
         game.addVisual(flappyLeiTexto)
         game.addVisual(instruccionTexto)
+        game.removeVisual(flappyLei)
     }
     method desRender(){
         cancion.stop()

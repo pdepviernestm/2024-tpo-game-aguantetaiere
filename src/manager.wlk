@@ -23,17 +23,18 @@ object gameManager{
 
 
     // Movimiento de los obstacles
-		game.onTick(500, 'obstacles movement', ({
-			obstaclesManager.getCollectionArriba().forEach({ 
-				obstacle => obstacle.moverIzquierda()
-				})
-			}))
+		// game.onTick(500, 'obstacles movement', ({
+		// 	obstaclesManager.getCollectionArriba().forEach({ 
+		// 		obstacle => obstacle.moverIzquierda()
+		// 		})
+		// 	}))
 
-		game.onTick(500, 'obstacles movement', {
-			obstaclesManager.getCollectionAbajo().forEach({ 
-				obstacle => obstacle.moverIzquierda()
-				})
-			})
+		// game.onTick(500, 'obstacles movement', {
+		// 	obstaclesManager.getCollectionAbajo().forEach({ 
+		// 		obstacle => obstacle.moverIzquierda()
+		// 		})
+		// 	})
+    game.onTick(500,'obstacles movement',{obstaclesManager.moverObstaculos()})
 
     /*game.onTick(20000, 'Lali render', {lali.render()})
     game.onTick(1000, 'BancoCentral render', {bancoCentral.render()})

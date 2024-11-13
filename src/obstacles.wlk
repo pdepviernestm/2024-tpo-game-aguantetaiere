@@ -43,15 +43,19 @@ class Morir {
 
 
 
-class Obstacle {
-    const subs = []
-}
+
 
 class SubObstacle inherits Morir{
     var property p
     var property image
     var scored = false 
-    
+    var principal = false
+
+
+    method scored() = scored
+    method scoredCheck() {scored = true}
+    method principal() = principal  
+    method esPrincipal () {principal=true}
     method position() = p
     method position(newPosition) { p = newPosition }
     
@@ -61,12 +65,6 @@ class SubObstacle inherits Morir{
 
         self.position(game.at(p.x()-1,p.y()))
 
-       
-        // Verificar si Milei pasó el obstáculo y aumentar el puntaje solo una vez
-        if (!scored && flappyLei.position().x() > p.x()) {
-            scored = true // Marcamos que este obstáculo ya fue pasado y puntuado
-            score.text(score.textNumero() + 1) // Aumentar el puntaje en 1
-        }
         // romper obstaculos cuando se vvan del mapa
         if (p.x()<=-4){
             obstaclesManager.getCollectionAbajo().remove(self)
@@ -87,6 +85,8 @@ object obstaclesManager {
         const partesArriba= []
         [1,2,3,4,5,6].forEach({x =>  partesArriba.add(new SubObstacle(p = game.at(posX, posYBase + x), image = "obstMedio2.png"))})
         partesArriba.add(new SubObstacle(p = game.at(posX, posYBase), image = "obsTechInv2.png"))
+        const ultimo = new SubObstacle(p = game.at(posX, posYBase + 6), image = "obsTech2.png")
+        ultimo.esPrincipal()
         return (partesArriba)
     }
 
@@ -94,6 +94,7 @@ object obstaclesManager {
         const partesAbajo = []
         [0,1,2,3,4,5].forEach({x =>  partesAbajo.add(new SubObstacle(p = game.at(posX, posYBase + x), image = "obstMedio2.png"))})
         partesAbajo.add(new SubObstacle(p = game.at(posX, posYBase + 6), image = "obsTech2.png"))
+        
         return (partesAbajo)
 
     }
@@ -121,10 +122,21 @@ object obstaclesManager {
     method getCollectionArriba() = coleccionArriba
     method getCollectionAbajo() = coleccionAbajo
 
+
+
     // Movimiento de las partes del obstáculo hacia la izquierda y eliminación
     method moverObstaculos() {
         coleccionArriba.forEach({ parte => parte.moverIzquierda() })
         coleccionAbajo.forEach({ parte => parte.moverIzquierda() })
+        self.checkScore()
     }
    
+    method checkScore () {
+        coleccionAbajo.forEach({obstaculo => 
+        if (obstaculo.esPrincipal() &&!obstaculo.scored() && flappyLei.position().x() > obstaculo.position().x() ) {
+            obstaculo.scoredCheck()
+            score.text(score.textNumero()+1)
+            }
+        })
+    }
 }

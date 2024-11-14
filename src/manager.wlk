@@ -7,6 +7,7 @@ import powerUps.*
 
 object gameManager{
   var property personajeActual=lali
+
   method empezar(){
     game.addVisual(flappyLei)
     // movimiento de flappy
@@ -51,7 +52,7 @@ object gameManager{
     game.addVisual(score)
     game.addVisual(flappyLei)
 
-    
+
   }
 
   method eliminar(objeto){

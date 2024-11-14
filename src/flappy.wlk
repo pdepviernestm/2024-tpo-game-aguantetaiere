@@ -80,12 +80,7 @@ object score{
     method text(nuevoScore){
         text = nuevoScore
     
-    }
-    
-
-
-
-    
+    }    
     
 }
 
@@ -98,5 +93,5 @@ class LimitesMapa inherits Morir{
 
 }
 
-const pisoInvisible = new LimitesMapa(position = game.at(30, -10))
-const techoInvisible = new LimitesMapa(position = game.at(30, 95))
+const pisoInvisible = new LimitesMapa(position = game.at(3, -1))
+const techoInvisible = new LimitesMapa(position = game.at(3, 9.5))

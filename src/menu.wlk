@@ -24,8 +24,8 @@ object menu{
 }
 
 object instruccionTexto{
-    method position()=game.at(5,1)
-    method image() = "TextoMenu4.png"
+    method position()=game.at(2,-2)
+    method image() = "TextoMenu8.gif"
 }
 
 object flappyLeiTexto{

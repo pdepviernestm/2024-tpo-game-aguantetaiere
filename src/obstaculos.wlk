@@ -23,17 +23,31 @@ class Morir {
         //game.removeTickEvent("movimiento2")
 
         obstaculosManager.resetPosition()
+        
         powerUp.vaciarLista()
         lali.lista().forEach({l=>game.removeVisual(l)})
         lali.lista().forEach({l=>lali.lista().remove(l)})
+        //if(lali.cancion()){lali.cancion().stop()}
         bancoCentral.lista().forEach({b=>game.removeVisual(b)})
         bancoCentral.lista().forEach({b=>bancoCentral.lista().remove(b)})
+        //if(bancoCentral.cancion()){bancoCentral.cancion().stop()}
         larreta.lista().forEach({b=>game.removeVisual(b)})
-        larreta.lista().forEach({b=>bancoCentral.lista().remove(b)})
+        larreta.lista().forEach({b=>larreta.lista().remove(b)})
+        //if(larreta.cancion()){larreta.cancion().stop()}
+        dolar.lista().forEach({b=>game.removeVisual(b)})
+        dolar.lista().forEach({b=>dolar.lista().remove(b)})
+        //if(dolar.cancion()){dolar.cancion().stop()}
+        
+        /*powerUp.listaPowerUps().forEach({p=>p.cancion().stop()})
+        powerUp.listaPowerUps().forEach({p=>game.removeVisual(p)})
+        powerUp.listaPowerUps().forEach({p=>p.lista().remove(p)})
+        powerUp.vaciarLista()*/
+        
 
         flappyLei.position(flappyLei.initialPosition())
         flappyLei.setInvertido(false)
         // gameManager.stopCancion(cancionLali.cancion())
+        
         menu.render()
         score.text(0)
 
@@ -59,7 +73,7 @@ class Obstaculo {
 
     //Se corre solo al inicializar el juego
     method inicializar(){
-        coleccionSubObstaculos.add(new SubObstaculo(p=game.at(xInicial, yInicial), image = "obsTechInv2.png",ordenSubObstaculo=7))
+        coleccionSubObstaculos.add(new SubObstaculo(p=game.at(xInicial, yInicial), image = "obsTechInv3.png",ordenSubObstaculo=7))
         coleccionSubObstaculos.add(new SubObstaculo(p=game.at(xInicial, yInicial), image = "obsTech2.png",ordenSubObstaculo=3))
         [-6,-5,-4,-3,-2,-1,0,1,2,8,9,10,11,12,13,14,15].forEach({sub => coleccionSubObstaculos.add(new SubObstaculo(p = game.at(xInicial, yInicial), image = "obstMedio2.png", ordenSubObstaculo = sub))})
         coleccionSubObstaculos.forEach({ sub => game.addVisual(sub)})

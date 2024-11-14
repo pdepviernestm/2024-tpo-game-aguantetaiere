@@ -29,9 +29,8 @@ class Lali inherits PowerUps{
     override method image()  = "LaliChica.png"
     
     override method reaccionar() {
-            const cancion = game.sound("fanatico.mp3")
-            cancion.volume(0.1)
-            cancion.play()
+            lali.cancion().volume(0.1)
+            lali.cancion().play()
             score.text(score.textNumero()-3)
             game.removeVisual(self)
             
@@ -41,26 +40,13 @@ class Lali inherits PowerUps{
 
 }
 
-object lali {
-    
-    var property lista = []
-
-    method render () {
-        var posY = [3,4,5,6,7,8,9].anyOne()
-        var p = game.at(23,posY) 
-        var lDeposito = new Lali(pos=p)
-        game.addVisual(lDeposito)
-        lista.add(lDeposito)
-        powerUp.lista().add(lDeposito)
-    }
-
-}
 
 class BancoCentral inherits PowerUps{
 
-    override method image()  = "img70x70.png"
+    override method image()  = "bancoCentralContorno.png"
 
     override method reaccionar() {
+        bancoCentral.cancion().play()
         flappyLei.setInvertido(true)
          //game.removeTickEvent("movimiento")
          /*game.onTick(
@@ -68,16 +54,17 @@ class BancoCentral inherits PowerUps{
  		"movimiento2",
  		{ flappyLei.position(flappyLei.position().up(1)) 
      })*/
-
+    
      //keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().down(2)) })
 
      game.removeVisual(self)
      //powerUp.lista().remove(self)
      bancoCentral.lista().remove(self)
      flappyLei.setImagen("mileiChicoInv.png")
+     
 
     game.onTick(6000, 'cambiar invertido', {flappyLei.setInvertido(false)}) // Que a los 6 segs dejen de estar invertidos los controles
-    
+
     }
 }
 
@@ -86,9 +73,8 @@ class Larreta inherits PowerUps{
     override method image()  = "Larreta3.png"
 
     override method reaccionar() {
-        const cancion = game.sound("mileiLarreta.mp3")
+        larreta.cancion().play()
         //cancion.volume(0.1)
-        cancion.play()
         score.text(score.textNumero()-5)
         game.removeVisual(self)
             
@@ -98,13 +84,64 @@ class Larreta inherits PowerUps{
     }
 }
 
-object bancoCentral {
-  var property lista = []
+class Dolar inherits PowerUps{
+    override method image()  = "Dolar4.png"
+
+    override method reaccionar() {
+        dolar.cancion().play()
+        //cancion.volume(0.1)
+        score.text(score.textNumero()+10)
+        game.removeVisual(self)
+            
+        //powerUp.lista().remove(self)
+        dolar.lista().remove(self)
+
+    }
+
+}
+
+
+object lali {
+    
+    var property cancion = game.sound("fanatico.mp3")
+    var property lista = []
+
+    method render () {
+        var posY = [4,5,6,7,8].anyOne()
+        var p = game.at(23,posY) 
+        var lDeposito = new Lali(pos=p)
+        game.addVisual(lDeposito)
+        lista.add(lDeposito)
+        powerUp.lista().add(lDeposito)
+    }
+
+}
+
+
+object dolar{
+    var property lista = []
+    var property cancion = game.sound("panicShow.mp3")
     method vaciarLista(){
         lista=[]
     }
     method render () {
-        var posY = [3,4,5,6,7,8,9].anyOne()
+        var posY = [4,5,6,7,8].anyOne()
+        var p = game.at(23,posY) 
+        var verde = new Dolar(pos=p)
+        game.addVisual(verde)
+        lista.add(verde)
+        powerUp.lista().add(verde)
+    }
+}
+
+object bancoCentral {
+  var property lista = []
+  var property cancion = game.sound("mileiBancoCentral.mp3")
+    method vaciarLista(){
+        lista=[]
+    }
+    method render () {
+        var posY = [4,5,6,7,8].anyOne()
         var p = game.at(23,posY) 
         var banco = new BancoCentral(pos=p)
         game.addVisual(banco)
@@ -115,12 +152,12 @@ object bancoCentral {
 
 object larreta{
     var property lista = []
-
+    var property cancion = game.sound("mileiLarreta.mp3")
     method vaciarLista(){
         lista=[]
     }
     method render () {
-        var posY = [3,4,5,6,7,8,9].anyOne()
+        var posY = [4,5,6,7,8].anyOne()
         var p = game.at(23,posY) 
         var pelado = new Larreta(pos=p)
         game.addVisual(pelado)
@@ -133,7 +170,7 @@ object larreta{
 object powerUp{
     var property lista=[]
     var property personajeActual =lali
-    var listaPowerUps=[bancoCentral,lali,larreta]
+    var property listaPowerUps=[bancoCentral,lali,larreta,dolar]
 
     method vaciarLista(){
         lista=[]
@@ -149,6 +186,5 @@ object powerUp{
     }
 }
 
- 
 
 

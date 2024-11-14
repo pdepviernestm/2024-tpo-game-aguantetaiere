@@ -22,25 +22,30 @@
 
 ---
 
-## **Mecánicas del Juego**
+## Características del Juego
 
-- **Control Principal:** El jugador controla a Milei presionando una tecla para hacerlo subir. Si no lo hace, Milei cae por la gravedad.
-- **Dirección Predeterminada:** Milei siempre avanza hacia la derecha.
-- **Objetos Especiales:** Durante su travesía, Milei puede colisionar con diversos objetos que alteran su comportamiento de distintas maneras.
+### Obstáculos
+- Los obstáculos aparecen de manera constante y cambian de altura de forma aleatoria.
+- Se mueven hacia la izquierda y, al llegar al borde izquierdo de la pantalla, su posición se reinicia hacia la derecha con una nueva altura aleatoria.
+- Los obstáculos están compuestos de varias partes (subobstáculos).
+- **Colisión**: Si Milei colisiona con algún obstáculo, el juego finaliza.
 
----
+### Power-Ups
+Los **power-ups** añaden efectos especiales al juego. Actualmente, incluyen:
 
-## **Funciones Posibles**
+1. **Lali Espósito**
+   - **Efecto**: Disminuye la puntuación en 3 puntos y reproduce una canción específica (`fanatico.mp3`) al activarse.
+   - **Ubicación Aleatoria**: Se genera en una posición aleatoria en el eje Y, y se mueve hacia la izquierda hasta salir de la pantalla.
 
-- **Cambio de Dirección:** Cuando Milei colisiona con un objeto que simboliza "la izquierda", cambia temporalmente de dirección hacia la izquierda. Esto lo enoja y hace que Milei aumente de tamaño, lo que dificultará su avance a través de los obstáculos.
+2. **Banco Central**
+   - **Efecto**: Invierte los controles de Milei durante 6 segundos, haciendo que el jugador deba adaptarse rápidamente para evitar colisiones.
+   - **Ubicación Aleatoria**: Similar al power-up de Lali, aparece en una posición aleatoria y se mueve hacia la izquierda.
 
-- **Inversión de Controles:** Al tocar ciertos objetos, los controles del jugador se invierten. Esto significa que cuando el jugador presione la tecla para subir, Milei bajará, y viceversa.
+> Los power-ups son gestionados por el objeto `powerUp`, que selecciona aleatoriamente entre los power-ups disponibles y los coloca en la pantalla. Cuando un power-up se sale de la pantalla o es activado, se elimina del juego.
 
-- **Aceleración y Desaceleración:** Algunos objetos provocan que Milei aumente o disminuya su velocidad:
-  - **Aceleración:** Hará que Milei avance más rápido, lo que aumentará la dificultad para esquivar obstáculos.
-  - **Desaceleración:** Milei se moverá más lentamente, facilitando la navegación, pero aumentando la tensión en escenarios con muchos obstáculos.
-
-- **Vidas Extras:** Se incluirán objetos que otorguen vidas adicionales para permitir al jugador continuar después de colisionar con un obstáculo.
+### Puntuación
+- Cada vez que Milei pasa con éxito entre los obstáculos, la puntuación aumenta en 1.
+- La puntuación se muestra en pantalla y puede disminuir si Milei activa ciertos power-ups, como el de Lali.
 
 ---
 

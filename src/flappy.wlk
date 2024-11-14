@@ -1,6 +1,6 @@
 import manager.*
 import wollok.game.*
-import obstacles.*
+import obstaculos.*
 import powerUps.*
 import menu.*
 
@@ -13,6 +13,10 @@ object flappyLei {
 
     method setInvertido(bool){
         invertido=bool
+
+        if (bool == false){
+            image=imagenInicial
+        }
     }
 
     method saltar(){
@@ -39,8 +43,14 @@ object flappyLei {
 
     method initialPosition() = game.at(3,4)
 
-    method image() = "mileiChico.png"
+    var property imagenInicial = "mileiChico.png"
+
+    var property image = imagenInicial
+
     
+    method setImagen(nuevaImagen){
+        image = nuevaImagen
+    }
 }
 
 object score{
@@ -52,12 +62,21 @@ object score{
 
 
     var text = 0
-    var digitImages=[] //Lista de imagenes de los digitos
-
+    var digitImages=["score_0" ] //Lista de imagenes de los digitos    
+    var unidades = 0
+    var  decenas = 00 
     method textNumero()=text
 
     method text()=text.toString()
-    
+    method Actualizar () {
+         unidades = text %10
+         decenas = (text/10) % 10
+    }
+
+    method reset () {
+        self.text(0)
+    }
+
     method text(nuevoScore){
         text = nuevoScore
     
@@ -79,5 +98,5 @@ class LimitesMapa inherits Morir{
 
 }
 
-const pisoInvisible = new LimitesMapa(position = game.at(3, -1))
-const techoInvisible = new LimitesMapa(position = game.at(3, 9.5))
+const pisoInvisible = new LimitesMapa(position = game.at(30, -10))
+const techoInvisible = new LimitesMapa(position = game.at(30, 95))

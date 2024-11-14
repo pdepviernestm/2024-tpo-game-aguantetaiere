@@ -1,6 +1,8 @@
+// src/manager.wlk
+// src/manager.wlk
 import menu.*
 import flappy.*
-import obstacles.*
+import obstaculos.*
 import powerUps.*
 
 object gameManager{
@@ -15,12 +17,7 @@ object gameManager{
     })
 
     // Aparicion de los obstacles
-    obstaclesManager.render()
-    
-    game.onTick(4500,"aparicion obstacles",{
-        obstaclesManager.render()
-    })
-
+    // obstaculosManager.resetPosition()
 
     // Movimiento de los obstacles
 		// game.onTick(500, 'obstacles movement', ({
@@ -34,7 +31,7 @@ object gameManager{
 		// 		obstacle => obstacle.moverIzquierda()
 		// 		})
 		// 	})
-    game.onTick(500,'obstacles movement',{obstaclesManager.moverObstaculos()})
+    game.onTick(500,'obstaculos movement',{obstaculosManager.moverIzquierda()})
 
     /*game.onTick(20000, 'Lali render', {lali.render()})
     game.onTick(1000, 'BancoCentral render', {bancoCentral.render()})
@@ -54,7 +51,7 @@ object gameManager{
     game.addVisual(score)
     game.addVisual(flappyLei)
 
-
+    
   }
 
   method eliminar(objeto){

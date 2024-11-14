@@ -1,9 +1,7 @@
-// src/main.wpgm
-// src/main.wpgm
 import wollok.game.*
 import flappy.*
 //import flappyGame.*
-import obstacles.*
+import obstaculos.*
 import powerUps.*
 import menu.*
 import manager.*
@@ -14,6 +12,9 @@ program flappyLeiGame {
     game.title('FlappyLei')
     game.boardGround("fondo.png")
     menu.render()
+    //Renderiza e inicia obstaculos fuera de pantalla
+    obstaculosManager.inicializar()
+
     
     
     //game.start()

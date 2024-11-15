@@ -15,10 +15,20 @@ class Morir {
         game.removeTickEvent("Power up render")
         game.removeTickEvent("Power up movimiento")
         game.removeTickEvent("cambiar invertido")
+        game.removeTickEvent("Frenar cancion")
 
         obstaculosManager.resetPosition()
-                
+        //game.sound(lali.cancion()).stop()
+        //game.sound(larreta.cancion()).stop()
+        //game.sound(bancoCentral.cancion()).stop()
+        //game.sound(dolar.cancion()).stop()
         powerUp.lista().forEach({p=>game.removeVisual(p)})
+        
+        
+        if (powerUp.cancionSonando()){
+            powerUp.cancionActual().stop()
+            powerUp.terminaCancion() // Para setear el bool de cancion sonando en false
+        }
         powerUp.vaciarLista()
 
         flappyLei.position(flappyLei.initialPosition())

@@ -25,12 +25,17 @@ class Lali inherits PowerUps{
     
     override method image()  = "LaliChica.png"
     
+    var property cancion = game.sound(lali.cancion())
+
     override method reaccionar() {
-            game.sound(lali.cancion()).volume(0.1)
-            game.sound(lali.cancion()).play()
+            cancion.volume(0.1)
+            cancion.play()
             score.text(score.textNumero()-3) // Quitamos 3 puntos
             game.removeVisual(self) 
             powerUp.lista().remove(self)
+            powerUp.setCancionActual(cancion)
+        game.onTick(5800, 'Frenar cancion', {powerUp.terminaCancion()
+        game.removeTickEvent("Frenar cancion")})
     }
 
 }
@@ -39,39 +44,50 @@ class Lali inherits PowerUps{
 class BancoCentral inherits PowerUps{
 
     override method image()  = "bancoCentralContorno.png"
-
+    var property cancion = game.sound(bancoCentral.cancion())
     override method reaccionar() {
-        game.sound(bancoCentral.cancion()).play()
+        cancion.play()
         flappyLei.setInvertido(true)
         game.removeVisual(self)
         powerUp.lista().remove(self)
         flappyLei.setImagen("mileiChicoInv.png")
-        game.onTick(6000, 'cambiar invertido', {flappyLei.setInvertido(false)}) // Que a los 6 segs dejen de estar invertidos los controles
+        powerUp.setCancionActual(cancion)
+        game.onTick(4500, 'Frenar cancion', {powerUp.terminaCancion()
+        game.removeTickEvent("Frenar cancion")})
+        game.onTick(6000, 'cambiar invertido', {flappyLei.setInvertido(false)
+                                                game.removeTickEvent("cambiar invertido")}) // Que a los 6 segs dejen de estar invertidos los controles
+        
     }
 }
 
 class Larreta inherits PowerUps{
 
     override method image()  = "Larreta3.png"
-
+    var property cancion = game.sound(larreta.cancion())
     override method reaccionar() {
-        game.sound(larreta.cancion()).play()
+        cancion.play()
         score.text(score.textNumero()-5)
         game.removeVisual(self)
             
         powerUp.lista().remove(self)
+        powerUp.setCancionActual(cancion)
+        game.onTick(3500, 'Frenar cancion', {powerUp.terminaCancion()
+        game.removeTickEvent("Frenar cancion")})
     }
 }
 
 class Dolar inherits PowerUps{
     override method image()  = "Dolar4.png"
-
+    var property cancion = game.sound(dolar.cancion())
     override method reaccionar() {
-        game.sound(dolar.cancion()).play()
+        cancion.play()
         score.text(score.textNumero()+10)
         game.removeVisual(self)
             
         powerUp.lista().remove(self)
+        powerUp.setCancionActual(cancion)
+        game.onTick(5500, 'Frenar cancion', {powerUp.terminaCancion()
+        game.removeTickEvent("Frenar cancion")})
     }
 
 }
@@ -87,6 +103,7 @@ object lali {
         var lDeposito = new Lali(pos=p)
         game.addVisual(lDeposito)
         powerUp.lista().add(lDeposito)
+
     }
 
 }
@@ -102,6 +119,7 @@ object dolar{
         var verde = new Dolar(pos=p)
         game.addVisual(verde)
         powerUp.lista().add(verde)
+
     }
 }
 
@@ -115,6 +133,7 @@ object bancoCentral {
         var banco = new BancoCentral(pos=p)
         game.addVisual(banco)
         powerUp.lista().add(banco)
+
     }
 }
 
@@ -128,14 +147,27 @@ object larreta{
         var pelado = new Larreta(pos=p)
         game.addVisual(pelado)
         powerUp.lista().add(pelado)
+
     }
 }
 
 
 object powerUp{
     var property lista=[]
+    var property cancionActual=game.sound("sonidoMenu.mp3") // Para inicializar la variable
+    var property cancionSonando=false
+
+    method setCancionActual(cancion){
+        cancionActual=cancion
+        cancionSonando=true
+    }
+
+    method terminaCancion(){
+        cancionSonando=false
+    }
+
     var property personajeActual =lali // Para inicializar la variable
-    var property listaPowerUps=[bancoCentral,lali,larreta,dolar]
+    var property listaPowerUps=[lali,bancoCentral,larreta,dolar]
 
     method vaciarLista(){
         lista=[]

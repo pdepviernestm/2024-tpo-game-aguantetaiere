@@ -24,7 +24,7 @@ class Morir {
 
         obstaculosManager.resetPosition()
         
-        powerUp.vaciarLista()
+        /*
         lali.lista().forEach({l=>game.removeVisual(l)})
         lali.lista().forEach({l=>lali.lista().remove(l)})
         //if(lali.cancion()){lali.cancion().stop()}
@@ -37,7 +37,11 @@ class Morir {
         dolar.lista().forEach({b=>game.removeVisual(b)})
         dolar.lista().forEach({b=>dolar.lista().remove(b)})
         //if(dolar.cancion()){dolar.cancion().stop()}
+        */
         
+        powerUp.lista().forEach({p=>game.removeVisual(p)})
+        powerUp.vaciarLista()
+
         /*powerUp.listaPowerUps().forEach({p=>p.cancion().stop()})
         powerUp.listaPowerUps().forEach({p=>game.removeVisual(p)})
         powerUp.listaPowerUps().forEach({p=>p.lista().remove(p)})

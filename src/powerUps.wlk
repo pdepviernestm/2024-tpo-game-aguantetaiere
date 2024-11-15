@@ -18,7 +18,7 @@ class PowerUps{
 
         if (pos.x() <= -3){
             powerUp.lista().remove(powerUp.lista().first())
-            personaje.lista().remove(self)
+            //personaje.lista().remove(self)
             game.removeVisual(self)
         }
     }
@@ -35,7 +35,7 @@ class Lali inherits PowerUps{
             game.removeVisual(self)
             
             powerUp.lista().remove(self)
-            lali.lista().remove(self)
+            //lali.lista().remove(self)
     }
 
 }
@@ -59,7 +59,7 @@ class BancoCentral inherits PowerUps{
 
      game.removeVisual(self)
      powerUp.lista().remove(self)
-     bancoCentral.lista().remove(self)
+     //bancoCentral.lista().remove(self)
      flappyLei.setImagen("mileiChicoInv.png")
      
 
@@ -79,7 +79,7 @@ class Larreta inherits PowerUps{
         game.removeVisual(self)
             
         powerUp.lista().remove(self)
-        larreta.lista().remove(self)
+        //larreta.lista().remove(self)
 
     }
 }
@@ -94,7 +94,7 @@ class Dolar inherits PowerUps{
         game.removeVisual(self)
             
         powerUp.lista().remove(self)
-        dolar.lista().remove(self)
+        //dolar.lista().remove(self)
 
     }
 
@@ -111,7 +111,7 @@ object lali {
         var p = game.at(23,posY) 
         var lDeposito = new Lali(pos=p)
         game.addVisual(lDeposito)
-        lista.add(lDeposito)
+        //lista.add(lDeposito)
         powerUp.lista().add(lDeposito)
     }
 
@@ -129,7 +129,7 @@ object dolar{
         var p = game.at(23,posY) 
         var verde = new Dolar(pos=p)
         game.addVisual(verde)
-        lista.add(verde)
+        //lista.add(verde)
         powerUp.lista().add(verde)
     }
 }
@@ -145,7 +145,7 @@ object bancoCentral {
         var p = game.at(23,posY) 
         var banco = new BancoCentral(pos=p)
         game.addVisual(banco)
-        lista.add(banco)
+        //lista.add(banco)
         powerUp.lista().add(banco)
     }
 }

@@ -14,7 +14,7 @@ object flappyLei {
     method setInvertido(bool){
         invertido=bool
 
-        if (bool == false){
+        if (!invertido){
             image=imagenInicial
         }
     }

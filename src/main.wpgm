@@ -1,6 +1,5 @@
 import wollok.game.*
 import flappy.*
-//import flappyGame.*
 import obstaculos.*
 import powerUps.*
 import menu.*
@@ -15,25 +14,16 @@ program flappyLeiGame {
     //Renderiza e inicia obstaculos fuera de pantalla
     obstaculosManager.inicializar()
 
-    
-    
-    //game.start()
-
-    keyboard.space().onPressDo({menu.desRender()})
-    //keyboard.space().onPressDo({game.removeVisual(menu)})
-    keyboard.space().onPressDo({gameManager.empezar()})
+    // Salir del menú y empezar a jugar
+    keyboard.space().onPressDo({menu.desRender()
+                                gameManager.empezar()})
 
     // controles
     keyboard.q().onPressDo({game.stop()})
-    //keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(1)) })
-    keyboard.up().onPressDo({ flappyLei.saltar()})
-    keyboard.up().onPressDo({game.sound("zurdo.mp3").play()})
+    keyboard.up().onPressDo({ flappyLei.saltar()
+                            game.sound("zurdo.mp3").play()})
     
     game.start()
-    
-    
-    //menu.desRender()
-    //gameManager.manager()
 }
 
 

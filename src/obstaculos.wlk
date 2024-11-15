@@ -12,45 +12,17 @@ class Morir {
         game.removeTickEvent("obstaculos movement")
         game.removeTickEvent("powerUp")
         game.removeTickEvent("aparicion obstaculos")
-        /*game.removeTickEvent("Lali render")
-        game.removeTickEvent("movimiento lali")
-        game.removeTickEvent("BancoCentral render")
-        game.removeTickEvent("movimiento bancoCentral")*/
         game.removeTickEvent("Power up render")
         game.removeTickEvent("Power up movimiento")
         game.removeTickEvent("cambiar invertido")
 
-        //game.removeTickEvent("movimiento2")
-
         obstaculosManager.resetPosition()
-        
-        /*
-        lali.lista().forEach({l=>game.removeVisual(l)})
-        lali.lista().forEach({l=>lali.lista().remove(l)})
-        //if(lali.cancion()){lali.cancion().stop()}
-        bancoCentral.lista().forEach({b=>game.removeVisual(b)})
-        bancoCentral.lista().forEach({b=>bancoCentral.lista().remove(b)})
-        //if(bancoCentral.cancion()){bancoCentral.cancion().stop()}
-        larreta.lista().forEach({b=>game.removeVisual(b)})
-        larreta.lista().forEach({b=>larreta.lista().remove(b)})
-        //if(larreta.cancion()){larreta.cancion().stop()}
-        dolar.lista().forEach({b=>game.removeVisual(b)})
-        dolar.lista().forEach({b=>dolar.lista().remove(b)})
-        //if(dolar.cancion()){dolar.cancion().stop()}
-        */
-        
+                
         powerUp.lista().forEach({p=>game.removeVisual(p)})
         powerUp.vaciarLista()
 
-        /*powerUp.listaPowerUps().forEach({p=>p.cancion().stop()})
-        powerUp.listaPowerUps().forEach({p=>game.removeVisual(p)})
-        powerUp.listaPowerUps().forEach({p=>p.lista().remove(p)})
-        powerUp.vaciarLista()*/
-        
-
         flappyLei.position(flappyLei.initialPosition())
         flappyLei.setInvertido(false)
-        // gameManager.stopCancion(cancionLali.cancion())
         
         menu.render()
         score.text(0)

@@ -73,7 +73,7 @@ class Obstaculo {
 
     //Se corre solo al inicializar el juego
     method inicializar(){
-        coleccionSubObstaculos.add(new SubObstaculo(p=game.at(xInicial, yInicial), image = "obsTechInv3.png",ordenSubObstaculo=7))
+        coleccionSubObstaculos.add(new SubObstaculo(p=game.at(xInicial, yInicial), image = "obsTechInv2.png",ordenSubObstaculo=7))
         coleccionSubObstaculos.add(new SubObstaculo(p=game.at(xInicial, yInicial), image = "obsTech2.png",ordenSubObstaculo=3))
         [-6,-5,-4,-3,-2,-1,0,1,2,8,9,10,11,12,13,14,15].forEach({sub => coleccionSubObstaculos.add(new SubObstaculo(p = game.at(xInicial, yInicial), image = "obstMedio2.png", ordenSubObstaculo = sub))})
         coleccionSubObstaculos.forEach({ sub => game.addVisual(sub)})

@@ -3,7 +3,7 @@ import manager.*
 // Implementará los objetos especiales (power-ups) que afectan a Milei con diferentes efectos.
 import wollok.game.*
 import flappy.*
-import obstacles.*
+import obstaculos.*
 
 class PowerUps{
     var property pos
@@ -29,12 +29,12 @@ class Lali inherits PowerUps{
     override method image()  = "LaliChica.png"
     
     override method reaccionar() {
-            lali.cancion().volume(0.1)
-            lali.cancion().play()
+            game.sound(lali.cancion()).volume(0.1)
+            game.sound(lali.cancion()).play()
             score.text(score.textNumero()-3)
             game.removeVisual(self)
             
-            //powerUp.lista().remove(self)
+            powerUp.lista().remove(self)
             lali.lista().remove(self)
     }
 
@@ -46,7 +46,7 @@ class BancoCentral inherits PowerUps{
     override method image()  = "bancoCentralContorno.png"
 
     override method reaccionar() {
-        bancoCentral.cancion().play()
+        game.sound(bancoCentral.cancion()).play()
         flappyLei.setInvertido(true)
          //game.removeTickEvent("movimiento")
          /*game.onTick(
@@ -58,7 +58,7 @@ class BancoCentral inherits PowerUps{
      //keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().down(2)) })
 
      game.removeVisual(self)
-     //powerUp.lista().remove(self)
+     powerUp.lista().remove(self)
      bancoCentral.lista().remove(self)
      flappyLei.setImagen("mileiChicoInv.png")
      
@@ -73,12 +73,12 @@ class Larreta inherits PowerUps{
     override method image()  = "Larreta3.png"
 
     override method reaccionar() {
-        larreta.cancion().play()
+        game.sound(larreta.cancion()).play()
         //cancion.volume(0.1)
         score.text(score.textNumero()-5)
         game.removeVisual(self)
             
-        //powerUp.lista().remove(self)
+        powerUp.lista().remove(self)
         larreta.lista().remove(self)
 
     }
@@ -88,12 +88,12 @@ class Dolar inherits PowerUps{
     override method image()  = "Dolar4.png"
 
     override method reaccionar() {
-        dolar.cancion().play()
+        game.sound(dolar.cancion()).play()
         //cancion.volume(0.1)
         score.text(score.textNumero()+10)
         game.removeVisual(self)
             
-        //powerUp.lista().remove(self)
+        powerUp.lista().remove(self)
         dolar.lista().remove(self)
 
     }
@@ -103,7 +103,7 @@ class Dolar inherits PowerUps{
 
 object lali {
     
-    var property cancion = game.sound("fanatico.mp3")
+    var property cancion = "fanatico.mp3"
     var property lista = []
 
     method render () {
@@ -120,7 +120,7 @@ object lali {
 
 object dolar{
     var property lista = []
-    var property cancion = game.sound("panicShow.mp3")
+    var property cancion = "panicShow.mp3"
     method vaciarLista(){
         lista=[]
     }
@@ -136,7 +136,7 @@ object dolar{
 
 object bancoCentral {
   var property lista = []
-  var property cancion = game.sound("mileiBancoCentral.mp3")
+  var property cancion = "mileiBancoCentral.mp3"
     method vaciarLista(){
         lista=[]
     }
@@ -152,7 +152,7 @@ object bancoCentral {
 
 object larreta{
     var property lista = []
-    var property cancion = game.sound("mileiLarreta.mp3")
+    var property cancion ="mileiLarreta.mp3"
     method vaciarLista(){
         lista=[]
     }

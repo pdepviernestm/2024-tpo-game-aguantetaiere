@@ -1,5 +1,3 @@
-// src/manager.wlk
-// src/manager.wlk
 import menu.*
 import flappy.*
 import obstaculos.*
@@ -25,7 +23,34 @@ object gameManager{
     game.addVisual(techoInvisible)
     game.addVisual(score)
     game.addVisual(flappyLei)
+    game.addVisual(digit0)
 
 
+  }
+  method terminarJuego (){
+         game.removeTickEvent("movimiento")
+        game.removeTickEvent("obstaculos movement")
+        game.removeTickEvent("powerUp")
+        game.removeTickEvent("aparicion obstaculos")
+        game.removeTickEvent("Power up render")
+        game.removeTickEvent("Power up movimiento")
+        game.removeTickEvent("cambiar invertido")
+        game.removeTickEvent("Frenar cancion")
+
+        obstaculosManager.resetPosition()
+        powerUp.lista().forEach({p=>game.removeVisual(p)})
+        
+        
+        if (powerUp.cancionSonando()){
+            powerUp.cancionActual().stop()
+            powerUp.terminaCancion() // Para setear el bool de cancion sonando en false
+        }
+        powerUp.vaciarLista()
+
+        flappyLei.position(flappyLei.initialPosition())
+        flappyLei.setInvertido(false)
+        
+        menu.render()
+        score.text(0)
   }
 }

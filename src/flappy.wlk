@@ -62,17 +62,12 @@ object score{
 
 
     var text = 0
-    var digitImages=["score_0" ] //Lista de imagenes de los digitos    
-    var unidades = 0
-    var  decenas = 00 
+   
+    
+
     method textNumero()=text
 
     method text()=text.toString()
-    method Actualizar () {
-         unidades = text %10
-         decenas = (text/10) % 10
-    }
-
     method reset () {
         self.text(0)
     }
@@ -82,6 +77,15 @@ object score{
     
     }    
     
+}
+
+
+object digit0 {
+    var  position = game.at(7, 8) 
+    var  image = "0.png"
+    method position() =position
+    method image () = image
+
 }
 
 class LimitesMapa inherits Morir{

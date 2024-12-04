@@ -20,8 +20,13 @@ program flappyLeiGame {
 
     // controles
     keyboard.q().onPressDo({game.stop()})
+<<<<<<< Updated upstream
     keyboard.up().onPressDo({ flappyLei.saltar()
                             game.sound("zurdo.mp3").play()})
+=======
+    keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().up(10)) })
+    keyboard.up().onPressDo({game.sound("zurdo.mp3").play()})
+>>>>>>> Stashed changes
     
     game.start()
 }

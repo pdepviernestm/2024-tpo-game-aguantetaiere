@@ -10,11 +10,44 @@ object gameManager{
     // Caída de flappylei
     game.onTick(1000,"movimiento",{flappyLei.bajar()})
 
+<<<<<<< Updated upstream
     game.onTick(500,'obstaculos movement',{obstaculosManager.moverIzquierda()})
+=======
+    // movimiento de flappy
+    game.onTick(
+		100,
+		"movimiento",
+		{ flappyLei.position(flappyLei.position().down(1)) 
+    })
+>>>>>>> Stashed changes
 
     game.onTick(8000,'Power up render',{powerUp.render()})
     game.onTick(500,'Power up movimiento',{powerUp.moverIzquierda()})
     
+<<<<<<< Updated upstream
+=======
+    game.onTick(4500,"aparicion obstaculos",{
+        obstacles.render()
+    })
+
+
+    // Movimiento de los obstaculos
+		game.onTick(500, 'obstacles movement', ({
+			obstacles.getCollectionArriba().forEach({ 
+				obstacle => obstacle.moverIzquierda()
+				})
+			}))
+
+		game.onTick(500, 'obstacles movement', {
+			obstacles.getCollectionAbajo().forEach({ 
+				obstacle => obstacle.moverIzquierda()
+				})
+			})
+
+    game.onTick(10000, 'Lali render', {lali.render()})
+    game.onTick(500, 'movimiento lali', {lali.listaLalis().forEach({l=>l.moverIzquierda()})})
+
+>>>>>>> Stashed changes
     // manejo de colisiones
     game.onCollideDo(flappyLei, {cosa => cosa.reaccionar()})
 

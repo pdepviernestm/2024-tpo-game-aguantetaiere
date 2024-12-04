@@ -6,11 +6,20 @@ object menu{
     method render(){
         cancion.play()
         cancion.shouldLoop(true)
+<<<<<<< Updated upstream
         cancion.volume(0.1)
         game.width(17)
         game.height(10)
         game.cellSize(70)
         
+=======
+        cancion.volume(0.5)
+        game.width(170)//17
+        game.height(100) //10
+        game.cellSize(7) //70
+        game.title('FlappyLei')
+        game.boardGround("fondo.png")
+>>>>>>> Stashed changes
         game.addVisual(flappyLeiTexto)
         game.addVisual(instruccionTexto)
         game.removeVisual(flappyLei)

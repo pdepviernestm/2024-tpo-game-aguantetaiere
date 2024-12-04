@@ -3,7 +3,35 @@ import wollok.game.*
 import flappy.*
 import obstaculos.*
 
+<<<<<<< Updated upstream
 class PowerUps{
+=======
+// object powerUp {
+
+// // CAMBIO DE DIFICULTAD A LO 15 SEGUNDOS
+
+//     method reaccionarPowerUp(algo) {
+//         game.removeTickEvent("movimiento")
+//         game.onTick(
+// 		2000,
+// 		"movimiento2",
+// 		{ flappyLei.position(flappyLei.position().up(1)) 
+//     })
+    
+
+//     keyboard.up().onPressDo({ flappyLei.position(flappyLei.position().down(2)) })
+//     }
+
+//     method eliminarse(){
+        
+ //   }
+
+//}
+
+
+
+class Lali{
+>>>>>>> Stashed changes
     var property pos
     method image()
     method position() = pos
